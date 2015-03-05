@@ -72,7 +72,7 @@ namespace Kindergarten
                 if (c >= '0' && c <= '9')
                     newStr += c;
                 else if  (c == '.' || c == ',')
-                    newStr += '.';
+                    newStr += ',';
                 else
                     p = true;
             }

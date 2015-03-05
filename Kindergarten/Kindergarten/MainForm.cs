@@ -10,8 +10,7 @@ using System.Windows.Forms;
 
 using System.IO;
 
-using ExcelLibrary;
-using ExcelLibrary.SpreadSheet;
+using Excel = Microsoft.Office.Interop.Excel;
 
 namespace Kindergarten
 {
@@ -139,23 +138,45 @@ namespace Kindergarten
 
         private void CreateExcelReceipt(String path, UInt32 id, Child child, List<Goods> goods)
         {
-            FileStream baseFile = File.OpenRead(@"Template\kvitantsia.xls");
-            FileStream file = File.Create(path);
-            baseFile.CopyTo(file);
-            baseFile.Close();
-            file.Close();
-
-            Workbook book = Workbook.Load(path);
-            //Workbook book = Workbook.Load(@"Template\kvitantsia.xls");
-            Worksheet sheet = book.Worksheets[0];
-
             DateTime date = DateTime.Now;
             String[] month = { "Января", "Февраля", "Марта", "Апреля", "Мая", "Июня", "Июля", "Августа", "Сентября", "Октября", "Ноября", "Декабря" };
-
-            sheet.Cells[12, 1] = new Cell(String.Format("Квитанция на оплату № {0} от {1} {2} {3} г.", id, date.Day, month[date.Month - 1], date.Year), sheet.Cells[12, 1].Format);
-            sheet.Cells[18, 6] = new Cell(String.Format("{0} группа №{1}", child.LName + " " + child.FName + " " + child.PName, child.Group), sheet.Cells[18, 6].Format);
             
-            //book.Save(path);
+            Excel.Application app = new Excel.Application();
+            app.Visible = false;
+            Excel.Workbook book = app.Workbooks.Open(Path.GetFullPath(@"Template\kvitantsia.xls"));
+            Excel.Worksheet sheet = (Excel.Worksheet)book.Worksheets[1];
+
+            sheet.Cells[13, 2] = String.Format("Квитанция на оплату № {0} от {1} {2} {3} г.", id, date.Day, month[date.Month - 1], date.Year);
+            sheet.Cells[19, 7] = String.Format("{0} группа №{1}", child.LName + " " + child.FName + " " + child.PName, child.Group);
+
+            int startIndexI = 22, startIndexJ = 2;
+            Excel.Range R1 = (Excel.Range)sheet.Rows[startIndexI];
+
+            for (int i = 1; i < goods.Count; ++i)
+            {
+                R1.Copy(Type.Missing);
+                R1.Insert(Excel.XlInsertShiftDirection.xlShiftDown, false);
+            }
+
+            String f = "=";
+            Double sum = 0;
+            for (int i = 0; i != goods.Count; ++i)
+            {
+                sheet.Cells[startIndexI + i, startIndexJ] = i + 1;
+                sheet.Cells[startIndexI + i, startIndexJ + 2] = goods[i].Gds;
+                sheet.Cells[startIndexI + i, startIndexJ + 20] = goods[i].Count;
+                sheet.Cells[startIndexI + i, startIndexJ + 23] = goods[i].Unit;
+                sheet.Cells[startIndexI + i, startIndexJ + 26] = goods[i].Price;
+
+                f += String.Format("R[-{0}]C+", 2 + i);
+                sum += goods[i].Price * goods[i].Count;
+            }
+
+            sheet.Cells[startIndexI + goods.Count + 1, 33] = f.Substring(0, f.Length - 1);
+            sheet.Cells[startIndexI + goods.Count + 4, 2] = String.Format("Всего наименований {0}, на сумму {1} руб.", goods.Count, sum);
+
+            book.SaveAs(path);
+            app.Visible = true;
         }
 
         private void ChildrenToXLS(object sender, EventArgs e)

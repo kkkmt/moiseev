@@ -143,7 +143,7 @@ namespace Kindergarten
             String s = String.Format("select AddPayment('{0}', '{1}');", DateToStr(DateTime.Now), child.LName + " " + child.FName + " " + child.PName + " группа №" + child.Group);
             UInt32 id = (UInt32)sqlRequestScalar(s);
             foreach (Goods gds in goods)
-                if (!sqlRequest(String.Format("call AddGoods('{0}', '{1}', '{2}', '{3}', '{4}');", id, gds.Gds, gds.Count, gds.Unit, gds.Price)))
+                if (!sqlRequest(String.Format("call AddGoods('{0}', '{1}', '{2}', '{3}', '{4}');", id, gds.Gds, gds.Count, gds.Unit, gds.Price.ToString().Replace(',', '.'))))
                     return 0;
             return id;
         }
