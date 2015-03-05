@@ -1,0 +1,15 @@
+E:\Программирование\C#\Kindergarten\Kindergarten\bin\Release\Kindergarten.exe.config
+E:\Программирование\C#\Kindergarten\Kindergarten\bin\Release\Kindergarten.exe
+E:\Программирование\C#\Kindergarten\Kindergarten\bin\Release\Kindergarten.pdb
+E:\Программирование\C#\Kindergarten\Kindergarten\bin\Release\ExcelLibrary.dll
+E:\Программирование\C#\Kindergarten\Kindergarten\obj\Release\Kindergarten.csprojResolveAssemblyReference.cache
+E:\Программирование\C#\Kindergarten\Kindergarten\obj\Release\Kindergarten.AuthorizationForm.resources
+E:\Программирование\C#\Kindergarten\Kindergarten\obj\Release\Kindergarten.EditChildrenForm.resources
+E:\Программирование\C#\Kindergarten\Kindergarten\obj\Release\Kindergarten.Properties.Resources.resources
+E:\Программирование\C#\Kindergarten\Kindergarten\obj\Release\Kindergarten.csproj.GenerateResource.Cache
+E:\Программирование\C#\Kindergarten\Kindergarten\obj\Release\Kindergarten.exe
+E:\Программирование\C#\Kindergarten\Kindergarten\obj\Release\Kindergarten.pdb
+E:\Программирование\C#\Kindergarten\Kindergarten\bin\Release\Template\kvitantsia.xls
+E:\Программирование\C#\Kindergarten\Kindergarten\obj\Release\Kindergarten.MainForm.resources
+E:\Программирование\C#\Kindergarten\Kindergarten\obj\Release\Kindergarten.GoodsForm.resources
+E:\Программирование\C#\Kindergarten\Kindergarten\obj\Release\Kindergarten.EditGoodsForm.resources

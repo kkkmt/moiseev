@@ -1,0 +1,12 @@
+E:\Программирование\C#\Kindergarten\Kindergarten\bin\Debug\Kindergarten.exe.config
+E:\Программирование\C#\Kindergarten\Kindergarten\bin\Debug\Kindergarten.exe
+E:\Программирование\C#\Kindergarten\Kindergarten\bin\Debug\Kindergarten.pdb
+E:\Программирование\C#\Kindergarten\Kindergarten\obj\Debug\Kindergarten.csprojResolveAssemblyReference.cache
+E:\Программирование\C#\Kindergarten\Kindergarten\obj\Debug\Kindergarten.Form1.resources
+E:\Программирование\C#\Kindergarten\Kindergarten\obj\Debug\Kindergarten.Properties.Resources.resources
+E:\Программирование\C#\Kindergarten\Kindergarten\obj\Debug\Kindergarten.csproj.GenerateResource.Cache
+E:\Программирование\C#\Kindergarten\Kindergarten\obj\Debug\Kindergarten.exe
+E:\Программирование\C#\Kindergarten\Kindergarten\obj\Debug\Kindergarten.pdb
+E:\Программирование\C#\Kindergarten\Kindergarten\obj\Debug\Kindergarten.AuthorizationForm.resources
+E:\Программирование\C#\Kindergarten\Kindergarten\obj\Debug\Kindergarten.EditChildrenForm.resources
+E:\Программирование\C#\Kindergarten\Kindergarten\bin\Debug\ExcelLibrary.dll
