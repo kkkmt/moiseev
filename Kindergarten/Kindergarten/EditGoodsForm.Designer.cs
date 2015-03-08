@@ -45,9 +45,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(12, 15);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(49, 13);
+            this.label1.Size = new System.Drawing.Size(46, 13);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Товары:";
+            this.label1.Text = "Услуги:";
             // 
             // textBoxGds
             // 
@@ -143,7 +143,7 @@
             this.Controls.Add(this.label1);
             this.Name = "EditGoodsForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Товар";
+            this.Text = "Услуги";
             this.ResumeLayout(false);
             this.PerformLayout();
 

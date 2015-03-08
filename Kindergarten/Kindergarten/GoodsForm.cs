@@ -12,6 +12,7 @@ namespace Kindergarten
     public partial class GoodsForm : Form
     {
         public Boolean ok = false;
+        private Boolean activateItem = true;
 
         public List<Goods> goods
         {
@@ -37,6 +38,19 @@ namespace Kindergarten
             InitializeComponent();
         }
 
+        public void HidenButtons()
+        {
+            butAdd.Enabled = false;
+            butCancle.Enabled = false;
+            butDel.Enabled = false;
+            butEdit.Enabled = false;
+            butOk.Enabled = false;
+
+            activateItem = false;
+
+            contextMenuStrip1.Enabled = false;
+        }
+
         private void butAdd_Click(object sender, EventArgs e)
         {
             EditGoodsForm f = new EditGoodsForm();
@@ -50,7 +64,7 @@ namespace Kindergarten
 
         private void butEdit_Click(object sender, EventArgs e)
         {
-            if (listView1.SelectedItems.Count != 0)
+            if (listView1.SelectedItems.Count != 0 && activateItem)
             {
                 EditGoodsForm f = new EditGoodsForm();
                 f.butOk.Text = "Изменить";
@@ -89,7 +103,7 @@ namespace Kindergarten
         private void butOk_Click(object sender, EventArgs e)
         {
             if (listView1.Items.Count == 0)
-                MessageBox.Show("Нету товаров!!!", "Ошибка");
+                MessageBox.Show("Нет услуг!!!", "Ошибка");
             else
             {
                 ok = true;

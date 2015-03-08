@@ -65,7 +65,7 @@
             // 
             // columnHeader1
             // 
-            this.columnHeader1.Text = "Товары";
+            this.columnHeader1.Text = "Услуги";
             this.columnHeader1.Width = 210;
             // 
             // columnHeader2
@@ -172,7 +172,7 @@
             this.MaximizeBox = false;
             this.Name = "GoodsForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Товары";
+            this.Text = "Услуги";
             this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 

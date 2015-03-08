@@ -82,7 +82,7 @@ namespace Kindergarten
         {
             List<Child> Children = new List<Child>();
 
-            MySqlDataReader reader = sqlRequestReader("call GetChildren();");
+            MySqlDataReader reader = sqlRequestReader("SELECT * FROM kindergarten.getchildren;");
             while (reader.Read())
             {
                 Parent mother = new Parent(reader["MFName"].ToString(), reader["MLName"].ToString(), reader["MPName"].ToString(), reader["MPhone"].ToString());
@@ -111,9 +111,9 @@ namespace Kindergarten
             return child;
         }
 
-        public bool SaveEditChild(Child child)
+        public bool UpdateChild(Child child)
         {
-            String s = String.Format("call SaveEditChild('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}', '{9}', '{10}', '{11}', '{12}', '{13}', '{14}');",
+            String s = String.Format("call UpdateChild('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}', '{9}', '{10}', '{11}', '{12}', '{13}', '{14}');",
                 child.ID, child.FName, child.LName, child.PName, DateToStr(child.Birth), child.Address, child.Group,
                 child.Mother.FName, child.Mother.LName, child.Mother.PName, child.Mother.Phone,
                 child.Father.FName, child.Father.LName, child.Father.PName, child.Father.Phone);
@@ -146,6 +146,90 @@ namespace Kindergarten
                 if (!sqlRequest(String.Format("call AddGoods('{0}', '{1}', '{2}', '{3}', '{4}');", id, gds.Gds, gds.Count, gds.Unit, gds.Price.ToString().Replace(',', '.'))))
                     return 0;
             return id;
+        }
+
+        public List<Payment> GetPayments()
+        {
+            List<Payment> list = new List<Payment>();
+
+            MySqlDataReader reader = sqlRequestReader("SELECT * FROM kindergarten.getpayment;");
+            while (reader.Read())
+            {
+                Payment pay = new Payment(Convert.ToUInt32(reader["ID"].ToString()), ((DateTime)reader["Date"]), reader["Buyer"].ToString());
+                list.Add(pay);
+            }
+            reader.Close();
+
+            return list;
+        }
+
+        public List<Goods> GetGoodsByIDPayment(UInt32 IDPayment)
+        {
+            List<Goods> list = new List<Goods>();
+
+            MySqlDataReader reader = sqlRequestReader(String.Format("call kindergarten.GetGoodsByIDPayment('{0}');", IDPayment));
+            while (reader.Read())
+            {
+                Goods gds = new Goods(reader["Gds"].ToString(), Convert.ToInt32(reader["Count"].ToString()), reader["Unit"].ToString(), Convert.ToDouble(reader["Price"].ToString()));
+                list.Add(gds);
+            }
+            reader.Close();
+
+            return list;
+        }
+
+        #endregion
+
+        #region Personnel
+
+        public List<Personnel> GetPersonnel()
+        {
+            List<Personnel> list = new List<Personnel>();
+
+            MySqlDataReader reader = sqlRequestReader("SELECT * FROM kindergarten.getpersonnel;");
+            while (reader.Read())
+            {
+                Personnel Person = new Personnel(Convert.ToUInt32(reader["ID"].ToString()), reader["FName"].ToString(), reader["LName"].ToString(), reader["PName"].ToString(), reader["Post"].ToString(), Convert.ToDouble(reader["Solary"].ToString()), ((DateTime)reader["DateReceipt"]), ((DateTime)reader["DateDismissal"]));
+                list.Add(Person);
+            }
+            reader.Close();
+
+            return list;
+        }
+
+        public Personnel AddEmployee(Personnel person)
+        {
+            String s = String.Format("select AddEmployee('{0}', '{1}', '{2}', '{3}', '{4}');", person.FName, person.LName, person.PName, person.Post, person.Solary);
+            person.DateReceipt = DateTime.Parse(sqlRequestScalar(s).ToString());
+            return person;
+        }
+
+        public DateTime DismissalEmployee(UInt32 id)
+        {
+            String s = String.Format("select DismissalEmployee('{0}');", id);
+            return DateTime.Parse(sqlRequestScalar(s).ToString());
+        }
+
+        public bool UpdatePost(Personnel person)
+        {
+            return UpdatePost(person.ID, person.Post);
+        }
+
+        public bool UpdatePost(UInt32 id, String post)
+        {
+            String s = String.Format("call UpdatePost('{0}', '{1}');", id, post);
+            return sqlRequest(s);
+        }
+
+        public bool UpdateSalary(Personnel person)
+        {
+            return UpdateSalary(person.ID, person.Solary);
+        }
+
+        public bool UpdateSalary(UInt32 id, Double solary)
+        {
+            String s = String.Format("call UpdateSalary('{0}', '{1}');", id, solary);
+            return sqlRequest(s);
         }
 
         #endregion

@@ -152,9 +152,7 @@ namespace Kindergarten
 
         private void butOk_Click(object sender, EventArgs e)
         {
-            if (comboBoxDay.Text.Length == 0 || comboBoxMonth.Text.Length == 0 || comboBoxYear.Text.Length == 0 || FName.Length == 0 || LName.Length == 0 || PName.Length == 0 || Address.Length == 0 || Group.Length == 0 ||
-                MFName.Length == 0 || MLName.Length == 0 || MPName.Length == 0 ||
-                FFName.Length == 0 || FLName.Length == 0 || FPName.Length == 0)
+            if (comboBoxDay.Text.Length == 0 || comboBoxMonth.Text.Length == 0 || comboBoxYear.Text.Length == 0 || FName.Length == 0 || LName.Length == 0 || PName.Length == 0 || Address.Length == 0 || Group.Length == 0)
             {
                 Color col = Color.Red;
 
@@ -164,14 +162,6 @@ namespace Kindergarten
                 labelBirth.ForeColor = col;
                 labelAddress.ForeColor = col;
                 labelGroup.ForeColor = col;
-
-                labelMFName.ForeColor = col;
-                labelMLName.ForeColor = col;
-                labelMPName.ForeColor = col;
-
-                labelFFName.ForeColor = col;
-                labelFLName.ForeColor = col;
-                labelFPName.ForeColor = col;
 
                 MessageBox.Show("Обязательные поля не заполнены!!!", "Ошибка");
             }

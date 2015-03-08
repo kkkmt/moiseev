@@ -5,6 +5,27 @@ using System.Text;
 
 namespace Kindergarten
 {
+    public class Payment
+    {
+        public UInt32 IDPayment;
+        public DateTime Date;
+        public String Buyer;
+
+        public Payment(UInt32 idPayment, DateTime date, String buyer)
+        {
+            IDPayment = idPayment;
+            Date = date;
+            Buyer = buyer;
+        }
+
+        public Payment(Payment p)
+        {
+            IDPayment = p.IDPayment;
+            Date = p.Date;
+            Buyer = p.Buyer;
+        }
+    }
+
     public class Goods
     {
         public String Gds, Unit;
