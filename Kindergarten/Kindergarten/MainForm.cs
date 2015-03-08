@@ -424,7 +424,7 @@ namespace Kindergarten
             ListViewItem item = listViewPayment.SelectedItems[0];
             f.goods = sql.GetGoodsByIDPayment(Convert.ToUInt32(item.SubItems[0].Text));
             f.Text = item.SubItems[2].Text;
-            f.HidenButtons();
+            f.HidenButtons(false);
             f.ShowDialog();
         }
 
@@ -488,8 +488,97 @@ namespace Kindergarten
             foreach (Personnel person in list)
             {
                 String name = person.LName + " " + person.FName + " " + person.PName;
-                listViewPersonnel.Items.Add(new ListViewItem(new String[] { person.ID.ToString(), name, person.DateReceipt.ToShortDateString(), person.DateDismissal.ToShortDateString() }));
+                listViewPersonnel.Items.Add(new ListViewItem(new String[] { person.ID.ToString(), name, person.Post, person.Salary.ToString(), person.DateReceipt, person.DateDismissal }));
             }
+        }
+
+        private void butAddPersonnel_Click(object sender, EventArgs e)
+        {
+            EditPersonnel f = new EditPersonnel();
+            f.Text = "Добавить";
+            f.butOk.Text = "Добавить";
+            f.ShowDialog();
+
+            if (f.ok)
+            {
+                Personnel person = sql.AddPerson(f.person);
+                String name = person.LName + " " + person.FName + " " + person.PName;
+                listViewPersonnel.Items.Insert(0, new ListViewItem(new String[] { person.ID.ToString(), name, person.Post, person.Salary.ToString(), person.DateReceipt, person.DateDismissal }));
+            }
+        }
+
+        private void butUpdatePersonnel_Click(object sender, EventArgs e)
+        {
+            UpdateTablePersonnel();
+        }
+
+        private void butEditPersonnel_Click(object sender, EventArgs e)
+        {
+            if (listViewPersonnel.SelectedItems.Count == 1)
+            {
+                ListViewItem item = listViewPersonnel.SelectedItems[0];
+                if (item.SubItems[5].Text == "")
+                {
+                    EditPersonnel f = new EditPersonnel();
+                    f.person = sql.GetPerson(Convert.ToUInt32(item.Text));
+                    f.HidenButtons(false);
+                    f.ShowDialog();
+
+                    if (f.ok)
+                    {
+                        Personnel person = f.person;
+                        if (sql.UpdatePerson(person))
+                        {
+                            item.SubItems[2].Text = person.Post;
+                            item.SubItems[3].Text = person.Salary.ToString();
+                        }
+                        else
+                            MessageBox.Show("Ошибка!!!", "Ошибка");
+                    }
+                }
+            }
+        }
+
+        private void butDelPersonnel_Click(object sender, EventArgs e)
+        {
+            if (listViewPersonnel.SelectedItems.Count == 1)
+            {
+                ListViewItem item = listViewPersonnel.SelectedItems[0];
+                if (item.SubItems[5].Text == "" && MessageBox.Show(String.Format("Вы точно хотите уволить \"{0}\"?", item.SubItems[1].Text), "Уволить", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
+                    item.SubItems[5].Text = sql.DelPerson(Convert.ToUInt32(item.Text));
+            }
+        }
+
+        private void butBringBackPerson_Click(object sender, EventArgs e)
+        {
+            if (listViewPersonnel.SelectedItems.Count == 1)
+            {
+                ListViewItem item = listViewPersonnel.SelectedItems[0];
+                if (item.SubItems[5].Text != "" && MessageBox.Show(String.Format("Вы точно хотите вернуть \"{0}\" назад?", item.SubItems[1].Text), "Вернуть", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes && sql.BringBackPerson(Convert.ToUInt32(item.Text)))
+                    item.SubItems[5].Text = "";
+            }
+        }
+
+        private void contextMenuPersonnel_Opening(object sender, CancelEventArgs e)
+        {
+            if (listViewPersonnel.SelectedItems.Count == 1)
+            {
+                ContextMenuStrip menu = sender as ContextMenuStrip;
+                if (listViewPersonnel.SelectedItems[0].SubItems[5].Text == "")
+                {
+                    menu.Items[0].Enabled = true;
+                    menu.Items[1].Enabled = true;
+                    menu.Items[2].Enabled = false;
+                }
+                else
+                {
+                    menu.Items[0].Enabled = false;
+                    menu.Items[1].Enabled = false;
+                    menu.Items[2].Enabled = true;
+                }
+            }
+            else
+                e.Cancel = true;
         }
 
         #endregion

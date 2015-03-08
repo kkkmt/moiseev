@@ -38,17 +38,17 @@ namespace Kindergarten
             InitializeComponent();
         }
 
-        public void HidenButtons()
+        public void HidenButtons(Boolean enabled)
         {
-            butAdd.Enabled = false;
-            butCancle.Enabled = false;
-            butDel.Enabled = false;
-            butEdit.Enabled = false;
-            butOk.Enabled = false;
+            butAdd.Enabled = enabled;
+            butCancle.Enabled = enabled;
+            butDel.Enabled = enabled;
+            butEdit.Enabled = enabled;
+            butOk.Enabled = enabled;
 
-            activateItem = false;
+            activateItem = enabled;
 
-            contextMenuStrip1.Enabled = false;
+            contextMenuStrip1.Enabled = enabled;
         }
 
         private void butAdd_Click(object sender, EventArgs e)

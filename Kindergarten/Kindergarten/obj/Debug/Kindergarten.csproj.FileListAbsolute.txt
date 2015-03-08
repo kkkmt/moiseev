@@ -10,3 +10,17 @@ E:\Программирование\C#\Kindergarten\Kindergarten\obj\Debug\Kinde
 E:\Программирование\C#\Kindergarten\Kindergarten\obj\Debug\Kindergarten.AuthorizationForm.resources
 E:\Программирование\C#\Kindergarten\Kindergarten\obj\Debug\Kindergarten.EditChildrenForm.resources
 E:\Программирование\C#\Kindergarten\Kindergarten\bin\Debug\ExcelLibrary.dll
+E:\KKKMT\moiseev\Kindergarten\Kindergarten\bin\Debug\Kindergarten.exe.config
+E:\KKKMT\moiseev\Kindergarten\Kindergarten\obj\Debug\Kindergarten.exe
+E:\KKKMT\moiseev\Kindergarten\Kindergarten\obj\Debug\Kindergarten.pdb
+E:\KKKMT\moiseev\Kindergarten\Kindergarten\bin\Debug\Template\kvitantsia.xls
+E:\KKKMT\moiseev\Kindergarten\Kindergarten\bin\Debug\Kindergarten.exe
+E:\KKKMT\moiseev\Kindergarten\Kindergarten\bin\Debug\Kindergarten.pdb
+E:\KKKMT\moiseev\Kindergarten\Kindergarten\obj\Debug\Kindergarten.csprojResolveAssemblyReference.cache
+E:\KKKMT\moiseev\Kindergarten\Kindergarten\obj\Debug\Kindergarten.AuthorizationForm.resources
+E:\KKKMT\moiseev\Kindergarten\Kindergarten\obj\Debug\Kindergarten.EditChildrenForm.resources
+E:\KKKMT\moiseev\Kindergarten\Kindergarten\obj\Debug\Kindergarten.EditGoodsForm.resources
+E:\KKKMT\moiseev\Kindergarten\Kindergarten\obj\Debug\Kindergarten.GoodsForm.resources
+E:\KKKMT\moiseev\Kindergarten\Kindergarten\obj\Debug\Kindergarten.MainForm.resources
+E:\KKKMT\moiseev\Kindergarten\Kindergarten\obj\Debug\Kindergarten.Properties.Resources.resources
+E:\KKKMT\moiseev\Kindergarten\Kindergarten\obj\Debug\Kindergarten.csproj.GenerateResource.Cache

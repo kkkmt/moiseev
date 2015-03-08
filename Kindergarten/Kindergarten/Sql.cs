@@ -189,46 +189,82 @@ namespace Kindergarten
             MySqlDataReader reader = sqlRequestReader("SELECT * FROM kindergarten.getpersonnel;");
             while (reader.Read())
             {
-                Personnel Person = new Personnel(Convert.ToUInt32(reader["ID"].ToString()), reader["FName"].ToString(), reader["LName"].ToString(), reader["PName"].ToString(), reader["Post"].ToString(), Convert.ToDouble(reader["Solary"].ToString()), ((DateTime)reader["DateReceipt"]), ((DateTime)reader["DateDismissal"]));
-                list.Add(Person);
+                Personnel person = new Personnel(Convert.ToUInt32(reader["ID"].ToString()), reader["FName"].ToString(), reader["LName"].ToString(), reader["PName"].ToString(), reader["Post"].ToString(), Convert.ToDouble(reader["Salary"].ToString()), reader["DateReceipt"].ToString(), reader["DateDismissal"].ToString());
+                if (person.DateReceipt != "")
+                    person.DateReceipt = DateTime.Parse(person.DateReceipt).ToShortDateString();
+                if (person.DateDismissal != "")
+                    person.DateDismissal = DateTime.Parse(person.DateDismissal).ToShortDateString();
+                list.Add(person);
             }
             reader.Close();
 
             return list;
         }
 
-        public Personnel AddEmployee(Personnel person)
+        public Personnel GetPerson(UInt32 id)
         {
-            String s = String.Format("select AddEmployee('{0}', '{1}', '{2}', '{3}', '{4}');", person.FName, person.LName, person.PName, person.Post, person.Solary);
-            person.DateReceipt = DateTime.Parse(sqlRequestScalar(s).ToString());
+            Personnel person = null;
+
+            MySqlDataReader reader = sqlRequestReader(String.Format("SELECT * FROM kindergarten.getpersonnel WHERE ID = {0};", id));
+            while (reader.Read())
+            {
+                person = new Personnel(Convert.ToUInt32(reader["ID"].ToString()), reader["FName"].ToString(), reader["LName"].ToString(), reader["PName"].ToString(), reader["Post"].ToString(), Convert.ToDouble(reader["Salary"].ToString()), reader["DateReceipt"].ToString(), reader["DateDismissal"].ToString());
+                if (person.DateReceipt != "")
+                    person.DateReceipt = DateTime.Parse(person.DateReceipt).ToShortDateString();
+                if (person.DateDismissal != "")
+                    person.DateDismissal = DateTime.Parse(person.DateDismissal).ToShortDateString();
+            }
+            reader.Close();
+
             return person;
         }
 
-        public DateTime DismissalEmployee(UInt32 id)
+        public Personnel AddPerson(String fName, String lName, String pName, String post, Double salary)
         {
-            String s = String.Format("select DismissalEmployee('{0}');", id);
-            return DateTime.Parse(sqlRequestScalar(s).ToString());
+            return AddPerson(new Personnel(fName, lName, pName, post, salary));
         }
 
-        public bool UpdatePost(Personnel person)
+        public Personnel AddPerson(Personnel person)
         {
-            return UpdatePost(person.ID, person.Post);
+            String s = String.Format("call kindergarten.AddPerson('{0}', '{1}', '{2}', '{3}', '{4}');", person.FName, person.LName, person.PName, person.Post, person.Salary.ToString().Replace(',', '.'));
+
+            MySqlDataReader reader = sqlRequestReader(s);
+            while (reader.Read())
+            {
+                person.DateReceipt = DateTime.Parse(reader["DateReceipt"].ToString()).ToShortDateString();
+                person.ID = Convert.ToUInt32(reader["ID"].ToString());
+            }
+            reader.Close();
+
+            return person;
         }
 
-        public bool UpdatePost(UInt32 id, String post)
+        public String DelPerson(UInt32 id)
         {
-            String s = String.Format("call UpdatePost('{0}', '{1}');", id, post);
+            String s = String.Format("select DelPerson('{0}');", id);
+            return DateTime.Parse(sqlRequestScalar(s).ToString()).ToShortDateString();
+        }
+
+        public Personnel DelPerson(Personnel person)
+        {
+            person.DateDismissal = DelPerson(person.ID);
+            return person;
+        }
+
+        public bool BringBackPerson(UInt32 id)
+        {
+            String s = String.Format("call kindergarten.BringBackPerson('{0}');", id);
             return sqlRequest(s);
         }
 
-        public bool UpdateSalary(Personnel person)
+        public bool UpdatePerson(Personnel person)
         {
-            return UpdateSalary(person.ID, person.Solary);
+            return UpdatePerson(person.ID, person.Post, person.Salary);
         }
 
-        public bool UpdateSalary(UInt32 id, Double solary)
+        public bool UpdatePerson(UInt32 id, String post, Double salary)
         {
-            String s = String.Format("call UpdateSalary('{0}', '{1}');", id, solary);
+            String s = String.Format("call kindergarten.UpdatePerson('{0}', '{1}', '{2}');", id, post, salary.ToString().Replace(',', '.'));
             return sqlRequest(s);
         }
 
