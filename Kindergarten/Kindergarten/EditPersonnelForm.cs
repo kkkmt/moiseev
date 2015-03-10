@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace Kindergarten
 {
-    public partial class EditPersonnel : Form
+    public partial class EditPersonnelForm : Form
     {
         public Boolean ok = false;
 
@@ -33,7 +33,7 @@ namespace Kindergarten
             }
         }
 
-        public EditPersonnel()
+        public EditPersonnelForm()
         {
             InitializeComponent();
         }

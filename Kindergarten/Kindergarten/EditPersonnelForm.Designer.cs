@@ -1,6 +1,6 @@
 ﻿namespace Kindergarten
 {
-    partial class EditPersonnel
+    partial class EditPersonnelForm
     {
         /// <summary>
         /// Required designer variable.

@@ -42,6 +42,8 @@ namespace Kindergarten
                 UpdateTablePayment();
             else if (e.TabPageIndex == 2)
                 UpdateTablePersonnel();
+            else if (e.TabPageIndex == 3)
+                UpdateTablePayslip();
         }
 
         private String NumberToTextOne(Int32 value)
@@ -227,7 +229,7 @@ namespace Kindergarten
             sheet.Cells[startIndexI + goods.Count + 1, 33] = f.Substring(0, f.Length - 1);
             sheet.Cells[startIndexI + goods.Count + 4, 2] = String.Format("Всего наименований {0}, на сумму {1} руб.", goods.Count, sum);
             //Пятнадцать тысяч рублей 00 копеек
-            String sumStr = NumberToTextThousand(Convert.ToInt32(sum));
+            String sumStr = NumberToTextThousand((int)sum);
             sumStr = sumStr[0].ToString().ToUpper() + sumStr.Substring(1);
             String rub = "";
             switch (sumStr.Last())
@@ -494,7 +496,7 @@ namespace Kindergarten
 
         private void butAddPersonnel_Click(object sender, EventArgs e)
         {
-            EditPersonnel f = new EditPersonnel();
+            EditPersonnelForm f = new EditPersonnelForm();
             f.Text = "Добавить";
             f.butOk.Text = "Добавить";
             f.ShowDialog();
@@ -519,7 +521,7 @@ namespace Kindergarten
                 ListViewItem item = listViewPersonnel.SelectedItems[0];
                 if (item.SubItems[5].Text == "")
                 {
-                    EditPersonnel f = new EditPersonnel();
+                    EditPersonnelForm f = new EditPersonnelForm();
                     f.person = sql.GetPerson(Convert.ToUInt32(item.Text));
                     f.HidenButtons(false);
                     f.ShowDialog();
@@ -582,5 +584,30 @@ namespace Kindergarten
         }
 
         #endregion
+
+        #region Payslip
+
+        private void UpdateTablePayslip()
+        {
+            listViewPayslip.Items.Clear();
+
+            List<Payslip> list = sql.GetPayslip();
+
+            foreach (Payslip pay in list)
+                listViewPersonnel.Items.Add(new ListViewItem(new String[] { pay.ID.ToString(), pay.Date.ToShortDateString(), pay.ReportingFrom.ToShortDateString(), pay.ReportingTo.ToShortDateString() }));
+        }
+
+        private void butUpdatePayslip_Click(object sender, EventArgs e)
+        {
+            UpdateTablePayslip();
+        }
+
+        #endregion
+
+        private void butAddPayslip_Click(object sender, EventArgs e)
+        {
+            AddPayslipForm f = new AddPayslipForm();
+            f.ShowDialog();
+        }
     }
 }

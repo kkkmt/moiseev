@@ -27,4 +27,5 @@ E:\KKKMT\moiseev\Kindergarten\Kindergarten\obj\Release\Kindergarten.GoodsForm.re
 E:\KKKMT\moiseev\Kindergarten\Kindergarten\obj\Release\Kindergarten.MainForm.resources
 E:\KKKMT\moiseev\Kindergarten\Kindergarten\obj\Release\Kindergarten.Properties.Resources.resources
 E:\KKKMT\moiseev\Kindergarten\Kindergarten\obj\Release\Kindergarten.csproj.GenerateResource.Cache
-E:\KKKMT\moiseev\Kindergarten\Kindergarten\obj\Release\Kindergarten.EditPersonnel.resources
+E:\KKKMT\moiseev\Kindergarten\Kindergarten\obj\Release\Kindergarten.AddPayslipForm.resources
+E:\KKKMT\moiseev\Kindergarten\Kindergarten\obj\Release\Kindergarten.EditPersonnelForm.resources

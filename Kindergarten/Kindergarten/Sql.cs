@@ -269,5 +269,24 @@ namespace Kindergarten
         }
 
         #endregion
+
+        #region Payslip
+
+        public List<Payslip> GetPayslip()
+        {
+            List<Payslip> list = new List<Payslip>();
+
+            MySqlDataReader reader = sqlRequestReader("SELECT * FROM kindergarten.getpayslip;");
+            while (reader.Read())
+            {
+                Payslip pay = new Payslip(Convert.ToUInt32(reader["ID"].ToString()), DateTime.Parse(reader["Date"].ToString()), DateTime.Parse(reader["ReportingFrom"].ToString()), DateTime.Parse(reader["ReportingTo"].ToString()));
+                list.Add(pay);
+            }
+            reader.Close();
+
+            return list;
+        }
+
+        #endregion
     }
 }
