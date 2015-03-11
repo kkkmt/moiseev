@@ -29,15 +29,14 @@ namespace Kindergarten
 
     public class PayslipPeople
     {
-        public UInt32 IDPerson, IDPayslip;
+        public UInt32 ID;
         public String Name, Post;
         public Double Salary;
         public UInt32 WorkedDays;
 
-        public PayslipPeople(UInt32 idPerson, UInt32 idPayslip, String name, String post, Double salary, UInt32 workedDays)
+        public PayslipPeople(UInt32 id, String name, String post, Double salary, UInt32 workedDays = 0)
         {
-            IDPerson = idPerson;
-            IDPayslip = idPayslip;
+            ID = id;
             Name = name;
             Post = post;
             Salary = salary;
@@ -46,8 +45,7 @@ namespace Kindergarten
 
         public PayslipPeople(PayslipPeople p)
         {
-            IDPerson = p.IDPerson;
-            IDPayslip = p.IDPayslip;
+            ID = p.ID;
             Name = p.Name;
             Post = p.Post;
             Salary = p.Salary;

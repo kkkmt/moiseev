@@ -77,6 +77,12 @@
     <Compile Include="EditGoodsForm.Designer.cs">
       <DependentUpon>EditGoodsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="EditPayslipPeopleForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditPayslipPeopleForm.Designer.cs">
+      <DependentUpon>EditPayslipPeopleForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="EditPersonnelForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -112,6 +118,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="EditGoodsForm.resx">
       <DependentUpon>EditGoodsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditPayslipPeopleForm.resx">
+      <DependentUpon>EditPayslipPeopleForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EditPersonnelForm.resx">
       <DependentUpon>EditPersonnelForm.cs</DependentUpon>

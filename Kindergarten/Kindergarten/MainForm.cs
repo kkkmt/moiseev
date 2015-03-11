@@ -594,7 +594,7 @@ namespace Kindergarten
             List<Payslip> list = sql.GetPayslip();
 
             foreach (Payslip pay in list)
-                listViewPersonnel.Items.Add(new ListViewItem(new String[] { pay.ID.ToString(), pay.Date.ToShortDateString(), pay.ReportingFrom.ToShortDateString(), pay.ReportingTo.ToShortDateString() }));
+                listViewPayslip.Items.Add(new ListViewItem(new String[] { pay.ID.ToString(), pay.Date.ToShortDateString(), pay.ReportingFrom.ToShortDateString(), pay.ReportingTo.ToShortDateString() }));
         }
 
         private void butUpdatePayslip_Click(object sender, EventArgs e)
@@ -602,12 +602,21 @@ namespace Kindergarten
             UpdateTablePayslip();
         }
 
-        #endregion
-
         private void butAddPayslip_Click(object sender, EventArgs e)
         {
             AddPayslipForm f = new AddPayslipForm();
+            f.list = sql.GetPersonnelForPayslip();
             f.ShowDialog();
+
+            if (f.ok)
+            {
+                if (sql.AddPayslip(f.Date, f.Year, f.Month, f.list) && MessageBox.Show("Расчётная ведомость сохранена на сервере!\nВыгрузить квитанцию в Excel?", "Расчётная ведомость", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
+                {
+
+                }
+            }
         }
+
+        #endregion
     }
 }

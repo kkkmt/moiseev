@@ -34,8 +34,9 @@ namespace Kindergarten
                 command.ExecuteNonQuery();
                 return true;
             }
-            catch
+            catch (Exception ex)
             {
+                String s = ex.Message;
                 return false;
             }
         }
@@ -285,6 +286,39 @@ namespace Kindergarten
             reader.Close();
 
             return list;
+        }
+
+        public List<PayslipPeople> GetPersonnelForPayslip()
+        {
+            List<PayslipPeople> list = new List<PayslipPeople>();
+
+            MySqlDataReader reader = sqlRequestReader("SELECT * FROM kindergarten.GetPersonnelForPayslip;");
+            while (reader.Read())
+            {
+                PayslipPeople people = new PayslipPeople(Convert.ToUInt32(reader["ID"].ToString()), reader["Name"].ToString(), reader["Post"].ToString(), Convert.ToDouble(reader["Salary"].ToString()));
+                list.Add(people);
+            }
+            reader.Close();
+
+            return list;
+        }
+
+        public Boolean AddPayslip(DateTime date, int year, int month, List<PayslipPeople> list)
+        {
+            String first = String.Format("{0}.{1}.{2}", year, month, 1);
+            String last = String.Format("{0}.{1}.{2}", year, month, DateTime.DaysInMonth(year, month));
+            String s = String.Format("select kindergarten.AddPayslip('{0}', '{1}', '{2}');", DateToStr(date), first, last);
+            
+            UInt32 id = Convert.ToUInt32(sqlRequestScalar(s).ToString());
+
+            foreach (PayslipPeople people in list)
+            {
+                s = String.Format("call kindergarten.AddPayslipPeople('{0}', '{1}', '{2}', '{3}', '{4}', '{5}');", id, people.ID, people.Name, people.Post, people.Salary.ToString().Replace(',', '.'), people.WorkedDays);
+                if (!sqlRequest(s))
+                   return false;
+            }
+
+            return true;
         }
 
         #endregion

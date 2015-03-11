@@ -76,17 +76,17 @@
             this.butDelPersonnel = new System.Windows.Forms.ToolStripButton();
             this.butBringBackPerson = new System.Windows.Forms.ToolStripButton();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.удалитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripPayslip = new System.Windows.Forms.ToolStrip();
-            this.butUpdatePayslip = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-            this.butAddPayslip = new System.Windows.Forms.ToolStripButton();
-            this.butShowPayslip = new System.Windows.Forms.ToolStripButton();
             this.listViewPayslip = new System.Windows.Forms.ListView();
             this.columnHeader14 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader15 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader16 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader17 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.toolStripPayslip = new System.Windows.Forms.ToolStrip();
+            this.butUpdatePayslip = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.butAddPayslip = new System.Windows.Forms.ToolStripButton();
+            this.butShowPayslip = new System.Windows.Forms.ToolStripButton();
+            this.удалитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1.SuspendLayout();
             this.children.SuspendLayout();
             this.contextMenuChildren.SuspendLayout();
@@ -162,6 +162,7 @@
             // columnHeader11
             // 
             this.columnHeader11.Text = "Группа";
+            this.columnHeader11.Width = 90;
             // 
             // contextMenuChildren
             // 
@@ -509,11 +510,42 @@
             this.tabPage2.Text = "Расчётная ведомость";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // удалитьToolStripMenuItem
+            // listViewPayslip
             // 
-            this.удалитьToolStripMenuItem.Name = "удалитьToolStripMenuItem";
-            this.удалитьToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.удалитьToolStripMenuItem.Text = "Удалить";
+            this.listViewPayslip.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader14,
+            this.columnHeader15,
+            this.columnHeader16,
+            this.columnHeader17});
+            this.listViewPayslip.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listViewPayslip.FullRowSelect = true;
+            this.listViewPayslip.GridLines = true;
+            this.listViewPayslip.Location = new System.Drawing.Point(3, 28);
+            this.listViewPayslip.Name = "listViewPayslip";
+            this.listViewPayslip.Size = new System.Drawing.Size(773, 378);
+            this.listViewPayslip.TabIndex = 1;
+            this.listViewPayslip.UseCompatibleStateImageBehavior = false;
+            this.listViewPayslip.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader14
+            // 
+            this.columnHeader14.Text = "№";
+            this.columnHeader14.Width = 65;
+            // 
+            // columnHeader15
+            // 
+            this.columnHeader15.Text = "Дата составления";
+            this.columnHeader15.Width = 133;
+            // 
+            // columnHeader16
+            // 
+            this.columnHeader16.Text = "Отчётный период с";
+            this.columnHeader16.Width = 139;
+            // 
+            // columnHeader17
+            // 
+            this.columnHeader17.Text = "Отчётный период по";
+            this.columnHeader17.Width = 141;
             // 
             // toolStripPayslip
             // 
@@ -563,42 +595,11 @@
             this.butShowPayslip.Size = new System.Drawing.Size(23, 22);
             this.butShowPayslip.Text = "Посмотреть расчётную ведомость";
             // 
-            // listViewPayslip
+            // удалитьToolStripMenuItem
             // 
-            this.listViewPayslip.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader14,
-            this.columnHeader15,
-            this.columnHeader16,
-            this.columnHeader17});
-            this.listViewPayslip.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listViewPayslip.FullRowSelect = true;
-            this.listViewPayslip.GridLines = true;
-            this.listViewPayslip.Location = new System.Drawing.Point(3, 28);
-            this.listViewPayslip.Name = "listViewPayslip";
-            this.listViewPayslip.Size = new System.Drawing.Size(773, 378);
-            this.listViewPayslip.TabIndex = 1;
-            this.listViewPayslip.UseCompatibleStateImageBehavior = false;
-            this.listViewPayslip.View = System.Windows.Forms.View.Details;
-            // 
-            // columnHeader14
-            // 
-            this.columnHeader14.Text = "№";
-            this.columnHeader14.Width = 65;
-            // 
-            // columnHeader15
-            // 
-            this.columnHeader15.Text = "Дата составления";
-            this.columnHeader15.Width = 133;
-            // 
-            // columnHeader16
-            // 
-            this.columnHeader16.Text = "Отчётный период с";
-            this.columnHeader16.Width = 139;
-            // 
-            // columnHeader17
-            // 
-            this.columnHeader17.Text = "Отчётный период по";
-            this.columnHeader17.Width = 141;
+            this.удалитьToolStripMenuItem.Name = "удалитьToolStripMenuItem";
+            this.удалитьToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.удалитьToolStripMenuItem.Text = "Удалить";
             // 
             // MainForm
             // 
