@@ -32,3 +32,4 @@ E:\KKKMT\moiseev\Kindergarten\Kindergarten\obj\Release\Kindergarten.EditPersonne
 E:\KKKMT\moiseev\Kindergarten\Kindergarten\obj\Release\Kindergarten.EditPayslipPeopleForm.resources
 E:\KKKMT\moiseev\Kindergarten\Kindergarten\bin\Release\Template\vedomost.xls
 E:\KKKMT\moiseev\Kindergarten\Kindergarten\obj\Release\Kindergarten.ShowPayslipPeopleForm.resources
+E:\KKKMT\moiseev\Kindergarten\Kindergarten\bin\Release\MySql.Data.dll

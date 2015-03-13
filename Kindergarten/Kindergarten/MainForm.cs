@@ -248,8 +248,6 @@ namespace Kindergarten
                     else
                         rub = "рубля";
                     break;
-                    rub = "рубля";
-                    break;
                 default:
                     rub = "рублей";
                     break;

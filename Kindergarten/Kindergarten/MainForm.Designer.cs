@@ -192,32 +192,32 @@
             this.PrintToolStripMenuItem});
             this.contextMenuChildren.Name = "contextMenuChildren";
             this.contextMenuChildren.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.contextMenuChildren.Size = new System.Drawing.Size(130, 76);
+            this.contextMenuChildren.Size = new System.Drawing.Size(129, 76);
             this.contextMenuChildren.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuChildren_Opening);
             // 
             // изминитьToolStripMenuItem
             // 
             this.изминитьToolStripMenuItem.Name = "изминитьToolStripMenuItem";
-            this.изминитьToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
-            this.изминитьToolStripMenuItem.Text = "Изминить";
+            this.изминитьToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
+            this.изминитьToolStripMenuItem.Text = "Изменить";
             this.изминитьToolStripMenuItem.Click += new System.EventHandler(this.EditChildren);
             // 
             // удалитьToolStripMenuItem1
             // 
             this.удалитьToolStripMenuItem1.Name = "удалитьToolStripMenuItem1";
-            this.удалитьToolStripMenuItem1.Size = new System.Drawing.Size(129, 22);
+            this.удалитьToolStripMenuItem1.Size = new System.Drawing.Size(128, 22);
             this.удалитьToolStripMenuItem1.Text = "Удалить";
             this.удалитьToolStripMenuItem1.Click += new System.EventHandler(this.DeleteChildren);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(126, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(125, 6);
             // 
             // PrintToolStripMenuItem
             // 
             this.PrintToolStripMenuItem.Name = "PrintToolStripMenuItem";
-            this.PrintToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
+            this.PrintToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.PrintToolStripMenuItem.Text = "Оплата";
             this.PrintToolStripMenuItem.Click += new System.EventHandler(this.ChildrenToXLS);
             // 
@@ -575,7 +575,7 @@
             this.butPayslipPrintExcel});
             this.contextMenuPayslip.Name = "contextMenuPayslip";
             this.contextMenuPayslip.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.contextMenuPayslip.Size = new System.Drawing.Size(163, 48);
+            this.contextMenuPayslip.Size = new System.Drawing.Size(163, 70);
             this.contextMenuPayslip.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuPayslip_Opening);
             // 
             // butShow
