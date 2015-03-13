@@ -44,6 +44,8 @@ namespace Kindergarten
                 UpdateTablePersonnel();
             else if (e.TabPageIndex == 3)
                 UpdateTablePayslip();
+            else if (e.TabPageIndex == 4)
+                UpdateTableHistory();
         }
 
         private String NumberToTextOne(Int32 value)
@@ -191,7 +193,9 @@ namespace Kindergarten
             return (s + s2).Trim();
         }
 
-        private void CreateExcelReceipt(String path, UInt32 id, String Buyer, DateTime date, List<Goods> goods)
+        #region Children
+
+        private void CreateExcelReceipt(String path, UInt32 id, String buyer, DateTime date, List<Goods> goods)
         {
             String[] month = { "Января", "Февраля", "Марта", "Апреля", "Мая", "Июня", "Июля", "Августа", "Сентября", "Октября", "Ноября", "Декабря" };
 
@@ -201,7 +205,7 @@ namespace Kindergarten
             Excel.Worksheet sheet = (Excel.Worksheet)book.Worksheets[1];
 
             sheet.Cells[13, 2] = String.Format("Квитанция на оплату № {0} от {1} {2} {3} г.", id, date.Day, month[date.Month - 1], date.Year);
-            sheet.Cells[19, 7] = Buyer;
+            sheet.Cells[19, 7] = buyer;
 
             int startIndexI = 22, startIndexJ = 2;
             Excel.Range R1 = (Excel.Range)sheet.Rows[startIndexI];
@@ -250,7 +254,8 @@ namespace Kindergarten
                     rub = "рублей";
                     break;
             }
-            Int32 kopeck = (Int32)((sum - (Int32)sum) * 100);
+            //Int32 kopeck = (int)((sum - (int)sum) * 100);
+            int kopeck = (int)(sum * 100) % 100;
             String kopeckStr = "";
             switch (kopeck % 10)
             {
@@ -283,8 +288,6 @@ namespace Kindergarten
             String buyer = String.Format("{0} группа №{1}", child.LName + " " + child.FName + " " + child.PName, child.Group);
             CreateExcelReceipt(path, id, buyer, date, goods);
         }
-
-        #region Children
 
         private void UpdateTableChildren()
         {
@@ -469,9 +472,9 @@ namespace Kindergarten
                     foreach (ListViewItem item in listViewPayment.SelectedItems)
                     {
                         UInt32 id = Convert.ToUInt32(item.SubItems[0].Text);
-                        String name = String.Format("{0}\\Квитанция на оплату №{1}.xls", sfd.FileName, id);
+                        String path = String.Format("{0}\\Квитанция на оплату №{1}.xls", sfd.FileName, id);
                         Directory.CreateDirectory(sfd.FileName);
-                        CreateExcelReceipt(name, id, item.SubItems[2].Text, DateTime.Parse(item.SubItems[1].Text), sql.GetGoodsByIDPayment(id));                
+                        CreateExcelReceipt(path, id, item.SubItems[2].Text, DateTime.Parse(item.SubItems[1].Text), sql.GetGoodsByIDPayment(id));                
                     }
                 }
             }
@@ -587,6 +590,49 @@ namespace Kindergarten
 
         #region Payslip
 
+        private void CreateExcelPayslip(String path, UInt32 id, DateTime date, DateTime dateFrom, DateTime dateTo, List<PayslipPeople> list)
+        {
+            Excel.Application app = new Excel.Application();
+            app.Visible = false;
+            Excel.Workbook book = app.Workbooks.Open(Path.GetFullPath(@"Template\vedomost.xls"));
+            Excel.Worksheet sheet = (Excel.Worksheet)book.Worksheets[1];
+
+            sheet.Cells[11, 4] = id;
+            sheet.Cells[11, 6] = date.ToShortDateString();
+            sheet.Cells[12, 9] = dateFrom.ToShortDateString();
+            sheet.Cells[12, 12] = dateTo.ToShortDateString();
+
+            int startIndexI = 19;
+            Excel.Range R1 = (Excel.Range)sheet.Rows[startIndexI];
+
+            for (int i = 1; i < list.Count; ++i)
+            {
+                R1.Copy(Type.Missing);
+                R1.Insert(Excel.XlInsertShiftDirection.xlShiftDown, false);
+            }
+
+            String f = "=";
+            for (int i = 0; i != list.Count; ++i)
+            {
+                sheet.Cells[startIndexI + i, 1] = i + 1;
+                sheet.Cells[startIndexI + i, 2] = list[i].ID;
+                sheet.Cells[startIndexI + i, 3] = list[i].Name;
+                sheet.Cells[startIndexI + i, 4] = list[i].Post;
+                sheet.Cells[startIndexI + i, 5] = list[i].Salary;
+                sheet.Cells[startIndexI + i, 7] = list[i].WorkedDays;
+
+                f += String.Format("R[-{0}]C+", 1 + i);
+            }
+            f = f.Substring(0, f.Length - 1);
+            sheet.Cells[startIndexI + list.Count, 13] = f;
+            sheet.Cells[startIndexI + list.Count, 14] = f;
+            sheet.Cells[startIndexI + list.Count, 15] = f;
+            sheet.Cells[startIndexI + list.Count, 22] = f;
+
+            book.SaveAs(path);
+            app.Visible = true;
+        }
+
         private void UpdateTablePayslip()
         {
             listViewPayslip.Items.Clear();
@@ -605,18 +651,125 @@ namespace Kindergarten
         private void butAddPayslip_Click(object sender, EventArgs e)
         {
             AddPayslipForm f = new AddPayslipForm();
-            f.list = sql.GetPersonnelForPayslip();
+            f.List = sql.GetPersonnelForPayslip();
             f.ShowDialog();
 
             if (f.ok)
             {
-                if (sql.AddPayslip(f.Date, f.Year, f.Month, f.list) && MessageBox.Show("Расчётная ведомость сохранена на сервере!\nВыгрузить квитанцию в Excel?", "Расчётная ведомость", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
-                {
+                DateTime dateFrom = new DateTime(f.Year, f.Month, 1);
+                DateTime dateTo = new DateTime(f.Year, f.Month, DateTime.DaysInMonth(f.Year, f.Month));
 
+                UInt32 id = sql.AddPayslip(f.Date, dateFrom, dateTo, f.List);
+                if (id != 0)
+                {
+                    listViewPayslip.Items.Insert(0, new ListViewItem(new String[] { id.ToString(), f.Date.ToShortDateString(), dateFrom.ToShortDateString(), dateTo.ToShortDateString() }));
+
+                    if (MessageBox.Show("Расчётная ведомость сохранена на сервере!\nВыгрузить расчётную ведомость в Excel?", "Расчётная ведомость", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
+                    {
+                        SaveFileDialog sfd = new SaveFileDialog();
+                        sfd.Filter = "Exel Файл (*.xls)|*.xls";
+                        sfd.FileName = "Расчётная ведомость №" + id;
+
+                        if (sfd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                            CreateExcelPayslip(sfd.FileName, id, f.Date, dateFrom, dateTo, f.List);
+                    }
                 }
             }
         }
 
+        private void listViewPayslip_ItemActivate(object sender, EventArgs e)
+        {
+            if (listViewPayslip.SelectedItems.Count == 1)
+            {
+                ShowPayslipPeopleForm f = new ShowPayslipPeopleForm();
+
+                UInt32 id = Convert.ToUInt32(listViewPayslip.SelectedItems[0].SubItems[0].Text);
+                f.Text = "Расчётная ведомость №" + id;
+                f.List = sql.GetPayslipAtID(id);
+
+                f.ShowDialog();
+            }
+        }
+
+        private void butPayslipPrintExcel_Click(object sender, EventArgs e)
+        {
+            if (listViewPayslip.SelectedItems.Count != 0)
+            {
+                SaveFileDialog sfd = new SaveFileDialog();
+
+                if (listViewPayslip.SelectedItems.Count == 1)
+                {
+                    sfd.Filter = "Exel Файл (*.xls)|*.xls";
+                    sfd.FileName = "Расчётная ведомость №" + listViewPayslip.SelectedItems[0].SubItems[0].Text;
+                }
+                else
+                {
+                    sfd.Filter = "";
+                    sfd.FileName = "Расчётная ведомость " + DateTime.Now.ToShortDateString();
+                }
+
+                if (sfd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    bool b = listViewPayslip.SelectedItems.Count != 1;
+
+                    foreach (ListViewItem item in listViewPayslip.SelectedItems)
+                    {
+                        UInt32 id = Convert.ToUInt32(item.SubItems[0].Text);
+                        DateTime date = DateTime.Parse(item.SubItems[1].Text);
+                        DateTime dateFrom = DateTime.Parse(item.SubItems[2].Text);
+                        DateTime dateTo = DateTime.Parse(item.SubItems[3].Text);
+                        String path = sfd.FileName;
+
+                        if (b)
+                        {
+                            Directory.CreateDirectory(path);
+                            path = String.Format("{0}\\Расчётная ведомость №{1}.xls", path, id);
+                        }
+
+                        CreateExcelPayslip(path, id, date, dateFrom, dateTo, sql.GetPayslipAtID(id));
+                    }
+                }
+            }
+        }
+
+        private void contextMenuPayslip_Opening(object sender, CancelEventArgs e)
+        {
+            int count = listViewPayslip.SelectedItems.Count;
+            ContextMenuStrip menu = sender as ContextMenuStrip;
+
+            if (count == 0)
+                e.Cancel = true;
+            else if (count == 1)
+                menu.Items[0].Enabled = true;
+            else
+                menu.Items[0].Enabled = false;
+        }
+
         #endregion
+
+        #region History
+
+        private void UpdateTableHistory()
+        {
+            listViewHistory.Items.Clear();
+
+            List<History> list = sql.GetHistory();
+
+            foreach (History history in list)
+                listViewHistory.Items.Add(new ListViewItem(new String[] { history.ID.ToString(), history.Date.ToString(), history.Events, history.User }));
+        }
+
+        private void butHistoryUpdate_Click(object sender, EventArgs e)
+        {
+            UpdateTableHistory();
+        }
+
+        #endregion
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Properties.Settings.Default.Save();
+        }
+
     }
 }

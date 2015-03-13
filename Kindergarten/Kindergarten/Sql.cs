@@ -11,21 +11,21 @@ namespace Kindergarten
     {
         MySqlConnection connect = new MySqlConnection();
 
-        private MySqlDataReader sqlRequestReader(String request)
+        private MySqlDataReader SqlCommandReader(String request)
         {
             MySqlCommand command = connect.CreateCommand();
             command.CommandText = request;
             return command.ExecuteReader();
         }
 
-        private object sqlRequestScalar(String request)
+        private object SqlCommandScalar(String request)
         {
             MySqlCommand command = connect.CreateCommand();
             command.CommandText = request;
             return command.ExecuteScalar();
         }
 
-        private bool sqlRequest(String request)
+        private bool SqlCommand(String request)
         {
             try
             {
@@ -83,7 +83,7 @@ namespace Kindergarten
         {
             List<Child> Children = new List<Child>();
 
-            MySqlDataReader reader = sqlRequestReader("SELECT * FROM kindergarten.getchildren;");
+            MySqlDataReader reader = SqlCommandReader("SELECT * FROM kindergarten.getchildren;");
             while (reader.Read())
             {
                 Parent mother = new Parent(reader["MFName"].ToString(), reader["MLName"].ToString(), reader["MPName"].ToString(), reader["MPhone"].ToString());
@@ -100,7 +100,7 @@ namespace Kindergarten
         {
             Child child = null;
 
-            MySqlDataReader reader = sqlRequestReader(String.Format("CALL GetChild({0});", id));
+            MySqlDataReader reader = SqlCommandReader(String.Format("CALL GetChild({0});", id));
             while (reader.Read())
             {
                 Parent mother = new Parent(reader["MFName"].ToString(), reader["MLName"].ToString(), reader["MPName"].ToString(), reader["MPhone"].ToString());
@@ -118,7 +118,7 @@ namespace Kindergarten
                 child.ID, child.FName, child.LName, child.PName, DateToStr(child.Birth), child.Address, child.Group,
                 child.Mother.FName, child.Mother.LName, child.Mother.PName, child.Mother.Phone,
                 child.Father.FName, child.Father.LName, child.Father.PName, child.Father.Phone);
-            return sqlRequest(s);
+            return SqlCommand(s);
         }
 
         public UInt32 AddChild(Child child)
@@ -127,12 +127,12 @@ namespace Kindergarten
                 child.FName, child.LName, child.PName, DateToStr(child.Birth), child.Address, child.Group,
                 child.Mother.FName, child.Mother.LName, child.Mother.PName, child.Mother.Phone,
                 child.Father.FName, child.Father.LName, child.Father.PName, child.Father.Phone);
-            return (UInt32)sqlRequestScalar(s);
+            return (UInt32)SqlCommandScalar(s);
         }
 
         public bool DelChild(UInt32 id)
         {
-            return sqlRequest(String.Format("call DelChild({0});", id));
+            return SqlCommand(String.Format("call DelChild({0});", id));
         }
 
         #endregion
@@ -142,9 +142,9 @@ namespace Kindergarten
         public UInt32 AddPayment(Child child, List<Goods> goods)
         {
             String s = String.Format("select AddPayment('{0}', '{1}');", DateToStr(DateTime.Now), child.LName + " " + child.FName + " " + child.PName + " группа №" + child.Group);
-            UInt32 id = (UInt32)sqlRequestScalar(s);
+            UInt32 id = (UInt32)SqlCommandScalar(s);
             foreach (Goods gds in goods)
-                if (!sqlRequest(String.Format("call AddGoods('{0}', '{1}', '{2}', '{3}', '{4}');", id, gds.Gds, gds.Count, gds.Unit, gds.Price.ToString().Replace(',', '.'))))
+                if (!SqlCommand(String.Format("call AddGoods('{0}', '{1}', '{2}', '{3}', '{4}');", id, gds.Gds, gds.Count, gds.Unit, gds.Price.ToString().Replace(',', '.'))))
                     return 0;
             return id;
         }
@@ -153,7 +153,7 @@ namespace Kindergarten
         {
             List<Payment> list = new List<Payment>();
 
-            MySqlDataReader reader = sqlRequestReader("SELECT * FROM kindergarten.getpayment;");
+            MySqlDataReader reader = SqlCommandReader("SELECT * FROM kindergarten.getpayment;");
             while (reader.Read())
             {
                 Payment pay = new Payment(Convert.ToUInt32(reader["ID"].ToString()), ((DateTime)reader["Date"]), reader["Buyer"].ToString());
@@ -168,7 +168,7 @@ namespace Kindergarten
         {
             List<Goods> list = new List<Goods>();
 
-            MySqlDataReader reader = sqlRequestReader(String.Format("call kindergarten.GetGoodsByIDPayment('{0}');", IDPayment));
+            MySqlDataReader reader = SqlCommandReader(String.Format("call kindergarten.GetGoodsByIDPayment('{0}');", IDPayment));
             while (reader.Read())
             {
                 Goods gds = new Goods(reader["Gds"].ToString(), Convert.ToInt32(reader["Count"].ToString()), reader["Unit"].ToString(), Convert.ToDouble(reader["Price"].ToString()));
@@ -187,7 +187,7 @@ namespace Kindergarten
         {
             List<Personnel> list = new List<Personnel>();
 
-            MySqlDataReader reader = sqlRequestReader("SELECT * FROM kindergarten.getpersonnel;");
+            MySqlDataReader reader = SqlCommandReader("SELECT * FROM kindergarten.getpersonnel;");
             while (reader.Read())
             {
                 Personnel person = new Personnel(Convert.ToUInt32(reader["ID"].ToString()), reader["FName"].ToString(), reader["LName"].ToString(), reader["PName"].ToString(), reader["Post"].ToString(), Convert.ToDouble(reader["Salary"].ToString()), reader["DateReceipt"].ToString(), reader["DateDismissal"].ToString());
@@ -206,7 +206,7 @@ namespace Kindergarten
         {
             Personnel person = null;
 
-            MySqlDataReader reader = sqlRequestReader(String.Format("SELECT * FROM kindergarten.getpersonnel WHERE ID = {0};", id));
+            MySqlDataReader reader = SqlCommandReader(String.Format("SELECT * FROM kindergarten.getpersonnel WHERE ID = {0};", id));
             while (reader.Read())
             {
                 person = new Personnel(Convert.ToUInt32(reader["ID"].ToString()), reader["FName"].ToString(), reader["LName"].ToString(), reader["PName"].ToString(), reader["Post"].ToString(), Convert.ToDouble(reader["Salary"].ToString()), reader["DateReceipt"].ToString(), reader["DateDismissal"].ToString());
@@ -229,7 +229,7 @@ namespace Kindergarten
         {
             String s = String.Format("call kindergarten.AddPerson('{0}', '{1}', '{2}', '{3}', '{4}');", person.FName, person.LName, person.PName, person.Post, person.Salary.ToString().Replace(',', '.'));
 
-            MySqlDataReader reader = sqlRequestReader(s);
+            MySqlDataReader reader = SqlCommandReader(s);
             while (reader.Read())
             {
                 person.DateReceipt = DateTime.Parse(reader["DateReceipt"].ToString()).ToShortDateString();
@@ -243,7 +243,7 @@ namespace Kindergarten
         public String DelPerson(UInt32 id)
         {
             String s = String.Format("select DelPerson('{0}');", id);
-            return DateTime.Parse(sqlRequestScalar(s).ToString()).ToShortDateString();
+            return DateTime.Parse(SqlCommandScalar(s).ToString()).ToShortDateString();
         }
 
         public Personnel DelPerson(Personnel person)
@@ -255,7 +255,7 @@ namespace Kindergarten
         public bool BringBackPerson(UInt32 id)
         {
             String s = String.Format("call kindergarten.BringBackPerson('{0}');", id);
-            return sqlRequest(s);
+            return SqlCommand(s);
         }
 
         public bool UpdatePerson(Personnel person)
@@ -266,7 +266,7 @@ namespace Kindergarten
         public bool UpdatePerson(UInt32 id, String post, Double salary)
         {
             String s = String.Format("call kindergarten.UpdatePerson('{0}', '{1}', '{2}');", id, post, salary.ToString().Replace(',', '.'));
-            return sqlRequest(s);
+            return SqlCommand(s);
         }
 
         #endregion
@@ -277,7 +277,7 @@ namespace Kindergarten
         {
             List<Payslip> list = new List<Payslip>();
 
-            MySqlDataReader reader = sqlRequestReader("SELECT * FROM kindergarten.getpayslip;");
+            MySqlDataReader reader = SqlCommandReader("SELECT * FROM kindergarten.getpayslip;");
             while (reader.Read())
             {
                 Payslip pay = new Payslip(Convert.ToUInt32(reader["ID"].ToString()), DateTime.Parse(reader["Date"].ToString()), DateTime.Parse(reader["ReportingFrom"].ToString()), DateTime.Parse(reader["ReportingTo"].ToString()));
@@ -292,7 +292,7 @@ namespace Kindergarten
         {
             List<PayslipPeople> list = new List<PayslipPeople>();
 
-            MySqlDataReader reader = sqlRequestReader("SELECT * FROM kindergarten.GetPersonnelForPayslip;");
+            MySqlDataReader reader = SqlCommandReader("SELECT * FROM kindergarten.GetPersonnelForPayslip;");
             while (reader.Read())
             {
                 PayslipPeople people = new PayslipPeople(Convert.ToUInt32(reader["ID"].ToString()), reader["Name"].ToString(), reader["Post"].ToString(), Convert.ToDouble(reader["Salary"].ToString()));
@@ -303,22 +303,54 @@ namespace Kindergarten
             return list;
         }
 
-        public Boolean AddPayslip(DateTime date, int year, int month, List<PayslipPeople> list)
+        public List<PayslipPeople> GetPayslipAtID(UInt32 ID)
         {
-            String first = String.Format("{0}.{1}.{2}", year, month, 1);
-            String last = String.Format("{0}.{1}.{2}", year, month, DateTime.DaysInMonth(year, month));
-            String s = String.Format("select kindergarten.AddPayslip('{0}', '{1}', '{2}');", DateToStr(date), first, last);
-            
-            UInt32 id = Convert.ToUInt32(sqlRequestScalar(s).ToString());
+            List<PayslipPeople> list = new List<PayslipPeople>();
+
+            MySqlDataReader reader = SqlCommandReader(String.Format("call kindergarten.GetPayslipPeopleAtIDPayslip('{0}');", ID));
+            while (reader.Read())
+            {
+                PayslipPeople people = new PayslipPeople(Convert.ToUInt32(reader["IDPerson"].ToString()), reader["Name"].ToString(), reader["Post"].ToString(), Convert.ToDouble(reader["Salary"].ToString()), Convert.ToUInt32(reader["WorkedDays"].ToString()));
+                list.Add(people);
+            }
+            reader.Close();
+
+            return list;
+        }
+
+        public UInt32 AddPayslip(DateTime date, DateTime dateFrom, DateTime dateTo, List<PayslipPeople> list)
+        {
+            String s = String.Format("select kindergarten.AddPayslip('{0}', '{1}', '{2}');", DateToStr(date), DateToStr(dateFrom), DateToStr(dateTo));
+
+            UInt32 id = Convert.ToUInt32(SqlCommandScalar(s).ToString());
 
             foreach (PayslipPeople people in list)
             {
                 s = String.Format("call kindergarten.AddPayslipPeople('{0}', '{1}', '{2}', '{3}', '{4}', '{5}');", id, people.ID, people.Name, people.Post, people.Salary.ToString().Replace(',', '.'), people.WorkedDays);
-                if (!sqlRequest(s))
-                   return false;
+                if (!SqlCommand(s))
+                   return 0;
             }
 
-            return true;
+            return id;
+        }
+
+        #endregion
+
+        #region
+
+        public List<History> GetHistory()
+        {
+            List<History> list = new List<History>();
+
+            MySqlDataReader reader = SqlCommandReader("SELECT * FROM kindergarten.gethistory;");
+            while (reader.Read())
+            {
+                History history = new History(Convert.ToUInt32(reader["ID"].ToString()), DateTime.Parse(reader["Date"].ToString()), reader["Events"].ToString(), reader["User"].ToString());
+                list.Add(history);
+            }
+            reader.Close();
+
+            return list;
         }
 
         #endregion

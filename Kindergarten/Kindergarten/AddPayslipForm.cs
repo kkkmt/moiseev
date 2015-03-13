@@ -13,10 +13,11 @@ namespace Kindergarten
     {
         public Boolean ok = false;
 
-        public List<PayslipPeople> list
+        public List<PayslipPeople> List
         {
             set
             {
+                listBoxName.Items.Clear();
                 foreach (PayslipPeople people in value)
                     listBoxName.Items.Add(people);
             }
@@ -29,6 +30,8 @@ namespace Kindergarten
                     PayslipPeople people = new PayslipPeople((UInt32)item.Tag, item.SubItems[0].Text, item.SubItems[1].Text, Convert.ToDouble(item.SubItems[2].Text), Convert.ToUInt32(item.SubItems[3].Text));
                     list.Add(people);
                 }
+
+                list.Sort(delegate(PayslipPeople p1, PayslipPeople p2) { return p1.CompareTo(p2); });
 
                 return list;
             }
@@ -145,6 +148,11 @@ namespace Kindergarten
                 ok = true;
                 Close();
             }
+        }
+
+        private void AddPayslipForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Properties.Settings.Default.Save();
         }
     }
 }

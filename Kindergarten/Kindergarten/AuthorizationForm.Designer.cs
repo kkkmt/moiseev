@@ -28,13 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AuthorizationForm));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBoxAddress = new System.Windows.Forms.TextBox();
-            this.textBoxLogin = new System.Windows.Forms.TextBox();
             this.textBoxPsw = new System.Windows.Forms.TextBox();
             this.butConnect = new System.Windows.Forms.Button();
+            this.textBoxLogin = new System.Windows.Forms.TextBox();
+            this.textBoxAddress = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -64,29 +65,12 @@
             this.label3.TabIndex = 2;
             this.label3.Text = "Пароль:";
             // 
-            // textBoxAddress
-            // 
-            this.textBoxAddress.Location = new System.Drawing.Point(104, 12);
-            this.textBoxAddress.Name = "textBoxAddress";
-            this.textBoxAddress.Size = new System.Drawing.Size(187, 20);
-            this.textBoxAddress.TabIndex = 3;
-            this.textBoxAddress.Text = "127.0.0.1";
-            // 
-            // textBoxLogin
-            // 
-            this.textBoxLogin.Location = new System.Drawing.Point(104, 38);
-            this.textBoxLogin.Name = "textBoxLogin";
-            this.textBoxLogin.Size = new System.Drawing.Size(187, 20);
-            this.textBoxLogin.TabIndex = 4;
-            this.textBoxLogin.Text = "root";
-            // 
             // textBoxPsw
             // 
             this.textBoxPsw.Location = new System.Drawing.Point(104, 64);
             this.textBoxPsw.Name = "textBoxPsw";
             this.textBoxPsw.Size = new System.Drawing.Size(187, 20);
             this.textBoxPsw.TabIndex = 5;
-            this.textBoxPsw.Text = "root";
             this.textBoxPsw.UseSystemPasswordChar = true;
             // 
             // butConnect
@@ -98,6 +82,24 @@
             this.butConnect.Text = "Подключиться";
             this.butConnect.UseVisualStyleBackColor = true;
             this.butConnect.Click += new System.EventHandler(this.butConnect_Click);
+            // 
+            // textBoxLogin
+            // 
+            this.textBoxLogin.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::Kindergarten.Properties.Settings.Default, "DefaultAuthorizationLogin", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.textBoxLogin.Location = new System.Drawing.Point(104, 38);
+            this.textBoxLogin.Name = "textBoxLogin";
+            this.textBoxLogin.Size = new System.Drawing.Size(187, 20);
+            this.textBoxLogin.TabIndex = 4;
+            this.textBoxLogin.Text = global::Kindergarten.Properties.Settings.Default.DefaultAuthorizationLogin;
+            // 
+            // textBoxAddress
+            // 
+            this.textBoxAddress.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::Kindergarten.Properties.Settings.Default, "DefaultAuthorizationAddress", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.textBoxAddress.Location = new System.Drawing.Point(104, 12);
+            this.textBoxAddress.Name = "textBoxAddress";
+            this.textBoxAddress.Size = new System.Drawing.Size(187, 20);
+            this.textBoxAddress.TabIndex = 3;
+            this.textBoxAddress.Text = global::Kindergarten.Properties.Settings.Default.DefaultAuthorizationAddress;
             // 
             // AuthorizationForm
             // 
@@ -112,10 +114,12 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "AuthorizationForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Авторизация";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AuthorizationForm_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 

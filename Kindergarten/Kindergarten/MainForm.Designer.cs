@@ -53,7 +53,7 @@
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.contextMenuStripPayment = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.contextMenuPayment = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.посмотретьТоварыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ButPrintToExcel = new System.Windows.Forms.ToolStripMenuItem();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -81,23 +81,38 @@
             this.columnHeader15 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader16 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader17 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.contextMenuPayslip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.butShow = new System.Windows.Forms.ToolStripMenuItem();
+            this.butPayslipPrintExcel = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripPayslip = new System.Windows.Forms.ToolStrip();
             this.butUpdatePayslip = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.butAddPayslip = new System.Windows.Forms.ToolStripButton();
             this.butShowPayslip = new System.Windows.Forms.ToolStripButton();
+            this.bitPayslipPrtintToExcel = new System.Windows.Forms.ToolStripButton();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.listViewHistory = new System.Windows.Forms.ListView();
+            this.columnHeader18 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader19 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader20 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader21 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.toolStrip3 = new System.Windows.Forms.ToolStrip();
+            this.butHistoryUpdate = new System.Windows.Forms.ToolStripButton();
             this.удалитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1.SuspendLayout();
             this.children.SuspendLayout();
             this.contextMenuChildren.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.personnel.SuspendLayout();
-            this.contextMenuStripPayment.SuspendLayout();
+            this.contextMenuPayment.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.contextMenuPersonnel.SuspendLayout();
             this.toolStrip2.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.contextMenuPayslip.SuspendLayout();
             this.toolStripPayslip.SuspendLayout();
+            this.tabPage3.SuspendLayout();
+            this.toolStrip3.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -106,6 +121,7 @@
             this.tabControl1.Controls.Add(this.personnel);
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
@@ -135,12 +151,13 @@
             this.columnHeader10,
             this.columnHeader11});
             this.listViewChildren.ContextMenuStrip = this.contextMenuChildren;
+            this.listViewChildren.DataBindings.Add(new System.Windows.Forms.Binding("Size", global::Kindergarten.Properties.Settings.Default, "DefaultMainSize", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.listViewChildren.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listViewChildren.FullRowSelect = true;
             this.listViewChildren.GridLines = true;
             this.listViewChildren.Location = new System.Drawing.Point(3, 28);
             this.listViewChildren.Name = "listViewChildren";
-            this.listViewChildren.Size = new System.Drawing.Size(773, 378);
+            this.listViewChildren.Size = global::Kindergarten.Properties.Settings.Default.DefaultMainSize;
             this.listViewChildren.TabIndex = 2;
             this.listViewChildren.UseCompatibleStateImageBehavior = false;
             this.listViewChildren.View = System.Windows.Forms.View.Details;
@@ -149,20 +166,22 @@
             // columnHeader8
             // 
             this.columnHeader8.Text = "Ф.И.О.";
+            this.columnHeader8.Width = global::Kindergarten.Properties.Settings.Default.DefaultListViewChildrenName;
             // 
             // columnHeader9
             // 
             this.columnHeader9.Text = "Год рождения";
+            this.columnHeader9.Width = global::Kindergarten.Properties.Settings.Default.DafaultListViewChildrenBirth;
             // 
             // columnHeader10
             // 
             this.columnHeader10.Text = "Адрес";
-            this.columnHeader10.Width = 128;
+            this.columnHeader10.Width = global::Kindergarten.Properties.Settings.Default.DafaultListViewChildrenAddress;
             // 
             // columnHeader11
             // 
             this.columnHeader11.Text = "Группа";
-            this.columnHeader11.Width = 90;
+            this.columnHeader11.Width = global::Kindergarten.Properties.Settings.Default.DafaultListViewChildrenGroup;
             // 
             // contextMenuChildren
             // 
@@ -280,7 +299,7 @@
             this.columnHeader1,
             this.columnHeader2,
             this.columnHeader3});
-            this.listViewPayment.ContextMenuStrip = this.contextMenuStripPayment;
+            this.listViewPayment.ContextMenuStrip = this.contextMenuPayment;
             this.listViewPayment.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listViewPayment.FullRowSelect = true;
             this.listViewPayment.GridLines = true;
@@ -295,27 +314,27 @@
             // columnHeader1
             // 
             this.columnHeader1.Text = "№";
-            this.columnHeader1.Width = 39;
+            this.columnHeader1.Width = global::Kindergarten.Properties.Settings.Default.DefaultListPaymentID;
             // 
             // columnHeader2
             // 
             this.columnHeader2.Text = "Дата";
-            this.columnHeader2.Width = 104;
+            this.columnHeader2.Width = global::Kindergarten.Properties.Settings.Default.DefaultListPaymentDate;
             // 
             // columnHeader3
             // 
             this.columnHeader3.Text = "Покупатель";
-            this.columnHeader3.Width = 323;
+            this.columnHeader3.Width = global::Kindergarten.Properties.Settings.Default.DefaultListPaymentBuyer;
             // 
-            // contextMenuStripPayment
+            // contextMenuPayment
             // 
-            this.contextMenuStripPayment.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.contextMenuPayment.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.посмотретьТоварыToolStripMenuItem,
             this.ButPrintToExcel});
-            this.contextMenuStripPayment.Name = "contextMenuStripPayment";
-            this.contextMenuStripPayment.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.contextMenuStripPayment.Size = new System.Drawing.Size(182, 48);
-            this.contextMenuStripPayment.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStripPayment_Opening);
+            this.contextMenuPayment.Name = "contextMenuStripPayment";
+            this.contextMenuPayment.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
+            this.contextMenuPayment.Size = new System.Drawing.Size(182, 48);
+            this.contextMenuPayment.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStripPayment_Opening);
             // 
             // посмотретьТоварыToolStripMenuItem
             // 
@@ -368,32 +387,32 @@
             // columnHeader4
             // 
             this.columnHeader4.Text = "№";
-            this.columnHeader4.Width = 29;
+            this.columnHeader4.Width = global::Kindergarten.Properties.Settings.Default.DefaultListPersonnelID;
             // 
             // columnHeader5
             // 
             this.columnHeader5.Text = "Ф.И.О.";
-            this.columnHeader5.Width = 122;
+            this.columnHeader5.Width = global::Kindergarten.Properties.Settings.Default.DefaultListPersonnelName;
             // 
             // columnHeader6
             // 
             this.columnHeader6.Text = "Должность";
-            this.columnHeader6.Width = 80;
+            this.columnHeader6.Width = global::Kindergarten.Properties.Settings.Default.DefaultListPersonnelPost;
             // 
             // columnHeader7
             // 
             this.columnHeader7.Text = "Оклад";
-            this.columnHeader7.Width = 54;
+            this.columnHeader7.Width = global::Kindergarten.Properties.Settings.Default.DefaultListPersonnelSalary;
             // 
             // columnHeader12
             // 
             this.columnHeader12.Text = "Дата приёма";
-            this.columnHeader12.Width = 80;
+            this.columnHeader12.Width = global::Kindergarten.Properties.Settings.Default.DefaultListPersonnelDateReceipt;
             // 
             // columnHeader13
             // 
             this.columnHeader13.Text = "Дата увольнения";
-            this.columnHeader13.Width = 100;
+            this.columnHeader13.Width = global::Kindergarten.Properties.Settings.Default.DefaultListPersonnelDateDismissal;
             // 
             // contextMenuPersonnel
             // 
@@ -517,6 +536,7 @@
             this.columnHeader15,
             this.columnHeader16,
             this.columnHeader17});
+            this.listViewPayslip.ContextMenuStrip = this.contextMenuPayslip;
             this.listViewPayslip.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listViewPayslip.FullRowSelect = true;
             this.listViewPayslip.GridLines = true;
@@ -526,26 +546,51 @@
             this.listViewPayslip.TabIndex = 1;
             this.listViewPayslip.UseCompatibleStateImageBehavior = false;
             this.listViewPayslip.View = System.Windows.Forms.View.Details;
+            this.listViewPayslip.ItemActivate += new System.EventHandler(this.listViewPayslip_ItemActivate);
             // 
             // columnHeader14
             // 
             this.columnHeader14.Text = "№";
-            this.columnHeader14.Width = 65;
+            this.columnHeader14.Width = global::Kindergarten.Properties.Settings.Default.DefaultListPayslipID;
             // 
             // columnHeader15
             // 
             this.columnHeader15.Text = "Дата составления";
-            this.columnHeader15.Width = 133;
+            this.columnHeader15.Width = global::Kindergarten.Properties.Settings.Default.DefaultListPayslipDate;
             // 
             // columnHeader16
             // 
             this.columnHeader16.Text = "Отчётный период с";
-            this.columnHeader16.Width = 139;
+            this.columnHeader16.Width = global::Kindergarten.Properties.Settings.Default.DefaultListPayslipDateFrom;
             // 
             // columnHeader17
             // 
             this.columnHeader17.Text = "Отчётный период по";
-            this.columnHeader17.Width = 141;
+            this.columnHeader17.Width = global::Kindergarten.Properties.Settings.Default.DefaultListPayslipDateTo;
+            // 
+            // contextMenuPayslip
+            // 
+            this.contextMenuPayslip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.butShow,
+            this.butPayslipPrintExcel});
+            this.contextMenuPayslip.Name = "contextMenuPayslip";
+            this.contextMenuPayslip.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
+            this.contextMenuPayslip.Size = new System.Drawing.Size(163, 48);
+            this.contextMenuPayslip.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuPayslip_Opening);
+            // 
+            // butShow
+            // 
+            this.butShow.Name = "butShow";
+            this.butShow.Size = new System.Drawing.Size(162, 22);
+            this.butShow.Text = "Открыть";
+            this.butShow.Click += new System.EventHandler(this.listViewPayslip_ItemActivate);
+            // 
+            // butPayslipPrintExcel
+            // 
+            this.butPayslipPrintExcel.Name = "butPayslipPrintExcel";
+            this.butPayslipPrintExcel.Size = new System.Drawing.Size(162, 22);
+            this.butPayslipPrintExcel.Text = "Записать в Excel";
+            this.butPayslipPrintExcel.Click += new System.EventHandler(this.butPayslipPrintExcel_Click);
             // 
             // toolStripPayslip
             // 
@@ -554,7 +599,8 @@
             this.butUpdatePayslip,
             this.toolStripSeparator4,
             this.butAddPayslip,
-            this.butShowPayslip});
+            this.butShowPayslip,
+            this.bitPayslipPrtintToExcel});
             this.toolStripPayslip.Location = new System.Drawing.Point(3, 3);
             this.toolStripPayslip.Name = "toolStripPayslip";
             this.toolStripPayslip.Size = new System.Drawing.Size(773, 25);
@@ -594,6 +640,86 @@
             this.butShowPayslip.Name = "butShowPayslip";
             this.butShowPayslip.Size = new System.Drawing.Size(23, 22);
             this.butShowPayslip.Text = "Посмотреть расчётную ведомость";
+            this.butShowPayslip.Click += new System.EventHandler(this.listViewPayslip_ItemActivate);
+            // 
+            // bitPayslipPrtintToExcel
+            // 
+            this.bitPayslipPrtintToExcel.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bitPayslipPrtintToExcel.Image = ((System.Drawing.Image)(resources.GetObject("bitPayslipPrtintToExcel.Image")));
+            this.bitPayslipPrtintToExcel.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.bitPayslipPrtintToExcel.Name = "bitPayslipPrtintToExcel";
+            this.bitPayslipPrtintToExcel.Size = new System.Drawing.Size(23, 22);
+            this.bitPayslipPrtintToExcel.Text = "Записать в Excel";
+            this.bitPayslipPrtintToExcel.Click += new System.EventHandler(this.butPayslipPrintExcel_Click);
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.listViewHistory);
+            this.tabPage3.Controls.Add(this.toolStrip3);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(779, 409);
+            this.tabPage3.TabIndex = 4;
+            this.tabPage3.Text = "История";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // listViewHistory
+            // 
+            this.listViewHistory.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader18,
+            this.columnHeader19,
+            this.columnHeader20,
+            this.columnHeader21});
+            this.listViewHistory.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listViewHistory.FullRowSelect = true;
+            this.listViewHistory.Location = new System.Drawing.Point(3, 28);
+            this.listViewHistory.Name = "listViewHistory";
+            this.listViewHistory.Size = new System.Drawing.Size(773, 378);
+            this.listViewHistory.TabIndex = 1;
+            this.listViewHistory.UseCompatibleStateImageBehavior = false;
+            this.listViewHistory.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader18
+            // 
+            this.columnHeader18.Text = "№";
+            this.columnHeader18.Width = global::Kindergarten.Properties.Settings.Default.DefaultListHistoryID;
+            // 
+            // columnHeader19
+            // 
+            this.columnHeader19.Text = "Дата";
+            this.columnHeader19.Width = global::Kindergarten.Properties.Settings.Default.DefaultListHistoryDate;
+            // 
+            // columnHeader20
+            // 
+            this.columnHeader20.Text = "Событие";
+            this.columnHeader20.Width = global::Kindergarten.Properties.Settings.Default.DefaultListHistoryEvents;
+            // 
+            // columnHeader21
+            // 
+            this.columnHeader21.Text = "Пользователь";
+            this.columnHeader21.Width = global::Kindergarten.Properties.Settings.Default.DefaultListHistoryUser;
+            // 
+            // toolStrip3
+            // 
+            this.toolStrip3.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.toolStrip3.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.butHistoryUpdate});
+            this.toolStrip3.Location = new System.Drawing.Point(3, 3);
+            this.toolStrip3.Name = "toolStrip3";
+            this.toolStrip3.Size = new System.Drawing.Size(773, 25);
+            this.toolStrip3.TabIndex = 0;
+            this.toolStrip3.Text = "toolStrip3";
+            // 
+            // butHistoryUpdate
+            // 
+            this.butHistoryUpdate.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.butHistoryUpdate.Image = ((System.Drawing.Image)(resources.GetObject("butHistoryUpdate.Image")));
+            this.butHistoryUpdate.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.butHistoryUpdate.Name = "butHistoryUpdate";
+            this.butHistoryUpdate.Size = new System.Drawing.Size(23, 22);
+            this.butHistoryUpdate.Text = "Обновить";
+            this.butHistoryUpdate.Click += new System.EventHandler(this.butHistoryUpdate_Click);
             // 
             // удалитьToolStripMenuItem
             // 
@@ -607,8 +733,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(787, 435);
             this.Controls.Add(this.tabControl1);
+            this.DataBindings.Add(new System.Windows.Forms.Binding("Location", global::Kindergarten.Properties.Settings.Default, "DafaultMainLocation", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Location = global::Kindergarten.Properties.Settings.Default.DafaultMainLocation;
             this.Name = "MainForm";
             this.Text = "Колобок";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.tabControl1.ResumeLayout(false);
             this.children.ResumeLayout(false);
@@ -617,7 +747,7 @@
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.personnel.ResumeLayout(false);
-            this.contextMenuStripPayment.ResumeLayout(false);
+            this.contextMenuPayment.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             this.contextMenuPersonnel.ResumeLayout(false);
@@ -625,8 +755,13 @@
             this.toolStrip2.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            this.contextMenuPayslip.ResumeLayout(false);
             this.toolStripPayslip.ResumeLayout(false);
             this.toolStripPayslip.PerformLayout();
+            this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
+            this.toolStrip3.ResumeLayout(false);
+            this.toolStrip3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -652,7 +787,7 @@
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStripPayment;
+        private System.Windows.Forms.ContextMenuStrip contextMenuPayment;
         private System.Windows.Forms.ToolStripMenuItem посмотретьТоварыToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ButPrintToExcel;
         private System.Windows.Forms.TabPage tabPage1;
@@ -690,6 +825,18 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ToolStripButton butAddPayslip;
         private System.Windows.Forms.ToolStripButton butShowPayslip;
+        private System.Windows.Forms.ContextMenuStrip contextMenuPayslip;
+        private System.Windows.Forms.ToolStripMenuItem butShow;
+        private System.Windows.Forms.ToolStripMenuItem butPayslipPrintExcel;
+        private System.Windows.Forms.ToolStripButton bitPayslipPrtintToExcel;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.ListView listViewHistory;
+        private System.Windows.Forms.ColumnHeader columnHeader18;
+        private System.Windows.Forms.ColumnHeader columnHeader19;
+        private System.Windows.Forms.ColumnHeader columnHeader20;
+        private System.Windows.Forms.ColumnHeader columnHeader21;
+        private System.Windows.Forms.ToolStrip toolStrip3;
+        private System.Windows.Forms.ToolStripButton butHistoryUpdate;
     }
 }
 

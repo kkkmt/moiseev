@@ -43,7 +43,17 @@ namespace Kindergarten
             WorkedDays = workedDays;
         }
 
+        public int CompareTo(PayslipPeople p)
+        {
+            return ID.CompareTo(p.ID);
+        }
+
         public PayslipPeople(PayslipPeople p)
+        {
+            Copy(p);
+        }
+
+        public void Copy(PayslipPeople p)
         {
             ID = p.ID;
             Name = p.Name;

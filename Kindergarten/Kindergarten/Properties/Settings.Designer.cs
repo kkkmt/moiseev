@@ -22,5 +22,449 @@ namespace Kindergarten.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("200, 200")]
+        public global::System.Drawing.Point DafaultMainLocation {
+            get {
+                return ((global::System.Drawing.Point)(this["DafaultMainLocation"]));
+            }
+            set {
+                this["DafaultMainLocation"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("298")]
+        public int DefaultListViewChildrenName {
+            get {
+                return ((int)(this["DefaultListViewChildrenName"]));
+            }
+            set {
+                this["DefaultListViewChildrenName"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("90")]
+        public int DafaultListViewChildrenBirth {
+            get {
+                return ((int)(this["DafaultListViewChildrenBirth"]));
+            }
+            set {
+                this["DafaultListViewChildrenBirth"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("227")]
+        public int DafaultListViewChildrenAddress {
+            get {
+                return ((int)(this["DafaultListViewChildrenAddress"]));
+            }
+            set {
+                this["DafaultListViewChildrenAddress"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("103")]
+        public int DafaultListViewChildrenGroup {
+            get {
+                return ((int)(this["DafaultListViewChildrenGroup"]));
+            }
+            set {
+                this["DafaultListViewChildrenGroup"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("349, 133")]
+        public global::System.Drawing.Size DefaultMainSize {
+            get {
+                return ((global::System.Drawing.Size)(this["DefaultMainSize"]));
+            }
+            set {
+                this["DefaultMainSize"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("39")]
+        public int DefaultListPaymentID {
+            get {
+                return ((int)(this["DefaultListPaymentID"]));
+            }
+            set {
+                this["DefaultListPaymentID"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("111")]
+        public int DefaultListPaymentDate {
+            get {
+                return ((int)(this["DefaultListPaymentDate"]));
+            }
+            set {
+                this["DefaultListPaymentDate"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("577")]
+        public int DefaultListPaymentBuyer {
+            get {
+                return ((int)(this["DefaultListPaymentBuyer"]));
+            }
+            set {
+                this["DefaultListPaymentBuyer"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("29")]
+        public int DefaultListPersonnelID {
+            get {
+                return ((int)(this["DefaultListPersonnelID"]));
+            }
+            set {
+                this["DefaultListPersonnelID"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("234")]
+        public int DefaultListPersonnelName {
+            get {
+                return ((int)(this["DefaultListPersonnelName"]));
+            }
+            set {
+                this["DefaultListPersonnelName"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("189")]
+        public int DefaultListPersonnelPost {
+            get {
+                return ((int)(this["DefaultListPersonnelPost"]));
+            }
+            set {
+                this["DefaultListPersonnelPost"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("95")]
+        public int DefaultListPersonnelSalary {
+            get {
+                return ((int)(this["DefaultListPersonnelSalary"]));
+            }
+            set {
+                this["DefaultListPersonnelSalary"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("94")]
+        public int DefaultListPersonnelDateReceipt {
+            get {
+                return ((int)(this["DefaultListPersonnelDateReceipt"]));
+            }
+            set {
+                this["DefaultListPersonnelDateReceipt"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("100")]
+        public int DefaultListPersonnelDateDismissal {
+            get {
+                return ((int)(this["DefaultListPersonnelDateDismissal"]));
+            }
+            set {
+                this["DefaultListPersonnelDateDismissal"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("46")]
+        public int DefaultListPayslipID {
+            get {
+                return ((int)(this["DefaultListPayslipID"]));
+            }
+            set {
+                this["DefaultListPayslipID"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("131")]
+        public int DefaultListPayslipDate {
+            get {
+                return ((int)(this["DefaultListPayslipDate"]));
+            }
+            set {
+                this["DefaultListPayslipDate"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("136")]
+        public int DefaultListPayslipDateFrom {
+            get {
+                return ((int)(this["DefaultListPayslipDateFrom"]));
+            }
+            set {
+                this["DefaultListPayslipDateFrom"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("139")]
+        public int DefaultListPayslipDateTo {
+            get {
+                return ((int)(this["DefaultListPayslipDateTo"]));
+            }
+            set {
+                this["DefaultListPayslipDateTo"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("143")]
+        public int DefaultAddPayslipListName {
+            get {
+                return ((int)(this["DefaultAddPayslipListName"]));
+            }
+            set {
+                this["DefaultAddPayslipListName"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("130")]
+        public int DefaultAddPayslipListPost {
+            get {
+                return ((int)(this["DefaultAddPayslipListPost"]));
+            }
+            set {
+                this["DefaultAddPayslipListPost"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("102")]
+        public int DefaultAddPayslipListSalary {
+            get {
+                return ((int)(this["DefaultAddPayslipListSalary"]));
+            }
+            set {
+                this["DefaultAddPayslipListSalary"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("99")]
+        public int DefaultAddPayslipListDays {
+            get {
+                return ((int)(this["DefaultAddPayslipListDays"]));
+            }
+            set {
+                this["DefaultAddPayslipListDays"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("127.0.0.1")]
+        public string DefaultAuthorizationAddress {
+            get {
+                return ((string)(this["DefaultAuthorizationAddress"]));
+            }
+            set {
+                this["DefaultAuthorizationAddress"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("root")]
+        public string DefaultAuthorizationLogin {
+            get {
+                return ((string)(this["DefaultAuthorizationLogin"]));
+            }
+            set {
+                this["DefaultAuthorizationLogin"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("210")]
+        public int DefaultGoodsList1 {
+            get {
+                return ((int)(this["DefaultGoodsList1"]));
+            }
+            set {
+                this["DefaultGoodsList1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("55")]
+        public int DefaultGoodsList2 {
+            get {
+                return ((int)(this["DefaultGoodsList2"]));
+            }
+            set {
+                this["DefaultGoodsList2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("31")]
+        public int DefaultGoodsList3 {
+            get {
+                return ((int)(this["DefaultGoodsList3"]));
+            }
+            set {
+                this["DefaultGoodsList3"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("93")]
+        public int DefaultGoodsList4 {
+            get {
+                return ((int)(this["DefaultGoodsList4"]));
+            }
+            set {
+                this["DefaultGoodsList4"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("180")]
+        public int DefaultShowPayslipPeople1 {
+            get {
+                return ((int)(this["DefaultShowPayslipPeople1"]));
+            }
+            set {
+                this["DefaultShowPayslipPeople1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("160")]
+        public int DefaultShowPayslipPeople2 {
+            get {
+                return ((int)(this["DefaultShowPayslipPeople2"]));
+            }
+            set {
+                this["DefaultShowPayslipPeople2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("101")]
+        public int DefaultShowPayslipPeople3 {
+            get {
+                return ((int)(this["DefaultShowPayslipPeople3"]));
+            }
+            set {
+                this["DefaultShowPayslipPeople3"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("99")]
+        public int DefaultShowPayslipPeople4 {
+            get {
+                return ((int)(this["DefaultShowPayslipPeople4"]));
+            }
+            set {
+                this["DefaultShowPayslipPeople4"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("39")]
+        public int DefaultListHistoryID {
+            get {
+                return ((int)(this["DefaultListHistoryID"]));
+            }
+            set {
+                this["DefaultListHistoryID"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("101")]
+        public int DefaultListHistoryDate {
+            get {
+                return ((int)(this["DefaultListHistoryDate"]));
+            }
+            set {
+                this["DefaultListHistoryDate"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("370")]
+        public int DefaultListHistoryEvents {
+            get {
+                return ((int)(this["DefaultListHistoryEvents"]));
+            }
+            set {
+                this["DefaultListHistoryEvents"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("233")]
+        public int DefaultListHistoryUser {
+            get {
+                return ((int)(this["DefaultListHistoryUser"]));
+            }
+            set {
+                this["DefaultListHistoryUser"] = value;
+            }
+        }
     }
 }

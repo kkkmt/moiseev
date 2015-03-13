@@ -29,11 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GoodsForm));
             this.listView1 = new System.Windows.Forms.ListView();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.изменитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.удалитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -42,6 +39,10 @@
             this.butDel = new System.Windows.Forms.Button();
             this.butCancle = new System.Windows.Forms.Button();
             this.butOk = new System.Windows.Forms.Button();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -62,26 +63,6 @@
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
             this.listView1.ItemActivate += new System.EventHandler(this.butEdit_Click);
-            // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Text = "Услуги";
-            this.columnHeader1.Width = 210;
-            // 
-            // columnHeader2
-            // 
-            this.columnHeader2.Text = "Кол-во";
-            this.columnHeader2.Width = 55;
-            // 
-            // columnHeader3
-            // 
-            this.columnHeader3.Text = "Ед.";
-            this.columnHeader3.Width = 31;
-            // 
-            // columnHeader4
-            // 
-            this.columnHeader4.Text = "Цена";
-            this.columnHeader4.Width = 93;
             // 
             // contextMenuStrip1
             // 
@@ -157,6 +138,26 @@
             this.butOk.UseVisualStyleBackColor = true;
             this.butOk.Click += new System.EventHandler(this.butOk_Click);
             // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Услуги";
+            this.columnHeader1.Width = global::Kindergarten.Properties.Settings.Default.DefaultGoodsList1;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Кол-во";
+            this.columnHeader2.Width = global::Kindergarten.Properties.Settings.Default.DefaultGoodsList2;
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "Ед.";
+            this.columnHeader3.Width = global::Kindergarten.Properties.Settings.Default.DefaultGoodsList3;
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "Цена";
+            this.columnHeader4.Width = global::Kindergarten.Properties.Settings.Default.DefaultGoodsList4;
+            // 
             // GoodsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -169,10 +170,12 @@
             this.Controls.Add(this.butAdd);
             this.Controls.Add(this.listView1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "GoodsForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Услуги";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.GoodsForm_FormClosing);
             this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 

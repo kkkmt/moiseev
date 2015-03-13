@@ -116,5 +116,10 @@ namespace Kindergarten
             if (listView1.SelectedItems.Count == 0)
                 e.Cancel = true;
         }
+
+        private void GoodsForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Properties.Settings.Default.Save();
+        }
     }
 }

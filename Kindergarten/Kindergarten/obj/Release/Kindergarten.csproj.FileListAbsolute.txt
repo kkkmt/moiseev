@@ -30,3 +30,5 @@ E:\KKKMT\moiseev\Kindergarten\Kindergarten\obj\Release\Kindergarten.csproj.Gener
 E:\KKKMT\moiseev\Kindergarten\Kindergarten\obj\Release\Kindergarten.AddPayslipForm.resources
 E:\KKKMT\moiseev\Kindergarten\Kindergarten\obj\Release\Kindergarten.EditPersonnelForm.resources
 E:\KKKMT\moiseev\Kindergarten\Kindergarten\obj\Release\Kindergarten.EditPayslipPeopleForm.resources
+E:\KKKMT\moiseev\Kindergarten\Kindergarten\bin\Release\Template\vedomost.xls
+E:\KKKMT\moiseev\Kindergarten\Kindergarten\obj\Release\Kindergarten.ShowPayslipPeopleForm.resources

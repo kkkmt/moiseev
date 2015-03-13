@@ -25,5 +25,10 @@ namespace Kindergarten
             else
                 MessageBox.Show("Ошибка!!!", "Ошибка");
         }
+
+        private void AuthorizationForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Properties.Settings.Default.Save();
+        }
     }
 }

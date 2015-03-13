@@ -1,7 +1,117 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)">
-  <Profiles>
-    <Profile Name="(Default)" />
-  </Profiles>
-  <Settings />
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Kindergarten.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="DafaultMainLocation" Type="System.Drawing.Point" Scope="User">
+      <Value Profile="(Default)">200, 200</Value>
+    </Setting>
+    <Setting Name="DefaultListViewChildrenName" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">298</Value>
+    </Setting>
+    <Setting Name="DafaultListViewChildrenBirth" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">90</Value>
+    </Setting>
+    <Setting Name="DafaultListViewChildrenAddress" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">227</Value>
+    </Setting>
+    <Setting Name="DafaultListViewChildrenGroup" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">103</Value>
+    </Setting>
+    <Setting Name="DefaultMainSize" Type="System.Drawing.Size" Scope="User">
+      <Value Profile="(Default)">349, 133</Value>
+    </Setting>
+    <Setting Name="DefaultListPaymentID" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">39</Value>
+    </Setting>
+    <Setting Name="DefaultListPaymentDate" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">111</Value>
+    </Setting>
+    <Setting Name="DefaultListPaymentBuyer" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">577</Value>
+    </Setting>
+    <Setting Name="DefaultListPersonnelID" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">29</Value>
+    </Setting>
+    <Setting Name="DefaultListPersonnelName" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">234</Value>
+    </Setting>
+    <Setting Name="DefaultListPersonnelPost" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">189</Value>
+    </Setting>
+    <Setting Name="DefaultListPersonnelSalary" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">95</Value>
+    </Setting>
+    <Setting Name="DefaultListPersonnelDateReceipt" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">94</Value>
+    </Setting>
+    <Setting Name="DefaultListPersonnelDateDismissal" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">100</Value>
+    </Setting>
+    <Setting Name="DefaultListPayslipID" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">46</Value>
+    </Setting>
+    <Setting Name="DefaultListPayslipDate" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">131</Value>
+    </Setting>
+    <Setting Name="DefaultListPayslipDateFrom" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">136</Value>
+    </Setting>
+    <Setting Name="DefaultListPayslipDateTo" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">139</Value>
+    </Setting>
+    <Setting Name="DefaultAddPayslipListName" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">143</Value>
+    </Setting>
+    <Setting Name="DefaultAddPayslipListPost" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">130</Value>
+    </Setting>
+    <Setting Name="DefaultAddPayslipListSalary" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">102</Value>
+    </Setting>
+    <Setting Name="DefaultAddPayslipListDays" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">99</Value>
+    </Setting>
+    <Setting Name="DefaultAuthorizationAddress" Type="System.String" Scope="User">
+      <Value Profile="(Default)">127.0.0.1</Value>
+    </Setting>
+    <Setting Name="DefaultAuthorizationLogin" Type="System.String" Scope="User">
+      <Value Profile="(Default)">root</Value>
+    </Setting>
+    <Setting Name="DefaultGoodsList1" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">210</Value>
+    </Setting>
+    <Setting Name="DefaultGoodsList2" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">55</Value>
+    </Setting>
+    <Setting Name="DefaultGoodsList3" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">31</Value>
+    </Setting>
+    <Setting Name="DefaultGoodsList4" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">93</Value>
+    </Setting>
+    <Setting Name="DefaultShowPayslipPeople1" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">180</Value>
+    </Setting>
+    <Setting Name="DefaultShowPayslipPeople2" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">160</Value>
+    </Setting>
+    <Setting Name="DefaultShowPayslipPeople3" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">101</Value>
+    </Setting>
+    <Setting Name="DefaultShowPayslipPeople4" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">99</Value>
+    </Setting>
+    <Setting Name="DefaultListHistoryID" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">39</Value>
+    </Setting>
+    <Setting Name="DefaultListHistoryDate" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">101</Value>
+    </Setting>
+    <Setting Name="DefaultListHistoryEvents" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">370</Value>
+    </Setting>
+    <Setting Name="DefaultListHistoryUser" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">233</Value>
+    </Setting>
+  </Settings>
 </SettingsFile>
